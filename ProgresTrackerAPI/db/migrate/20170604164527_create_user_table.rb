@@ -9,6 +9,8 @@ class CreateUserTable < ActiveRecord::Migration[5.0]
       t.string :github_url
       t.string :pronouns
       t.integer :cohort_id
+      
+      t.timestamps
     end
   end
 end
