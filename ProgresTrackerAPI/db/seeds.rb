@@ -23,8 +23,14 @@ day1 = Day.create({
   cohort_id: 1
   })
 
-  checkin1 = Checkin.create({
-    user_id: user1.id,
-    day_id: day1.id,
-    morning: Time.now
-    })
+checkin1 = Checkin.create({
+  user_id: user1.id,
+  day_id: day1.id,
+  morning: Time.now
+  })
+
+strike1 = Strike.create({
+  note: 'late morning checkin',
+  user_id: user1.id,
+  day_id: day1.id
+  })
