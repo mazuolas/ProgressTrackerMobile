@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :checkins
   has_many :strikes
   has_many :pairs
-
+  has_many :assessment_scores
   def current_pairing
     #finds the pairing for the current day
     self.pairs.find_by(day_id: Day.today(self.cohort_id))

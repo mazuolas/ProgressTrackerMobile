@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     resources :checkins, only: [:show, :update]
     resources :strikes, only: [:index]
     resources :pairs, only: [:index, :show]
+    resources :assessment_scores, only: [:index]
   end
 end

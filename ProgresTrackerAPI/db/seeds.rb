@@ -52,3 +52,19 @@ pair1 = Pair.create({
   day_id: day1.id,
   score: 100
   })
+
+score1 = AssessmentScore.create({
+  assessment_name: 'A01',
+  score: 35,
+  user_id: user1.id
+  })
+score2 = AssessmentScore.create({
+  assessment_name: 'A02',
+  score: 49,
+  user_id: user1.id
+  })
+score3 = AssessmentScore.create({
+  assessment_name: 'A03',
+  score: 30,
+  user_id: user1.id
+  })
