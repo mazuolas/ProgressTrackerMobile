@@ -5,5 +5,6 @@ Rails.application.routes.draw do
     resources :days, only: [:show]
     resources :checkins, only: [:show, :update]
     resources :strikes, only: [:index]
+    resources :pairs, only: [:index, :show]
   end
 end

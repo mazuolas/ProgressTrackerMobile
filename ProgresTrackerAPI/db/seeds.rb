@@ -16,6 +16,16 @@ user1 = User.create({
   pronouns: 'he/him/his',
   cohort_id: 1
   })
+user2 = User.create({
+  fname: 'Matthew',
+  lname: 'Moon',
+  picture_url: "http://s3-us-west-2.amazonaws.com/aa-progress-tracker/students/avatars/000/002/020/medium/Matthew_Moon_1.jpg?1490922093",
+  email: 'agkura.code@gmail.com',
+  github_url: 'http://github.com/Agkura',
+  linkedin_url: '',
+  pronouns: 'he/him/his',
+  cohort_id: 1
+  })
 
 day1 = Day.create({
   name: 'W10D6',
@@ -33,4 +43,12 @@ strike1 = Strike.create({
   note: 'late morning checkin',
   user_id: user1.id,
   day_id: day1.id
+  })
+
+pair1 = Pair.create({
+  user_id: user1.id,
+  partner_id: user2.id,
+  workstation: 'Golden Gate 1',
+  day_id: day1.id,
+  score: 100
   })
