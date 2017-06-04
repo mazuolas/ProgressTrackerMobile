@@ -16,3 +16,9 @@ user1 = User.create({
   pronouns: 'he/him/his',
   cohort_id: 1
   })
+
+day1 = Day.create({
+  name: 'W10D6',
+  date: Date.today,
+  cohort_id: 1
+  })
