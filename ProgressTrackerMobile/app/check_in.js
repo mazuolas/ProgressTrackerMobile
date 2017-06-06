@@ -15,14 +15,14 @@ class CheckIn extends React.Component {
       checkIns: {}
     };
 
-    this.checkIn = this.checkIn.bind(this);
-    this.renderCheckInButton = this.renderCheckInButton.bind(this);
   }
 
   componentWillMount() {
     this.fetchCheckins();
     this.fetchPosition();
     this.getDayRange();
+    // auto check in user
+    //this.checkInUser();
   }
 
   static navigationOptions = {
@@ -60,10 +60,6 @@ class CheckIn extends React.Component {
       });
   }
 
-  checkIn() {
-    this.setState({ checkedIn: true });
-  }
-
   getDayRange() {
     const time = new Date(Date.now());
     const hour = time.getHours();
@@ -90,16 +86,18 @@ class CheckIn extends React.Component {
 
   // 1) GPS matches coordinates
   // 2) Valid time range
-  renderCheckInButton() {
+  checkInUser() {
+    const dayRange =  this.state.dayRange;
+    console.log("check in");
     if (this.validLocation && this.state.dayRange !== null) {
-        return (
-          <Button
-            title="CHECK IN"
-            icon={{name: 'check-circle'}}
-            backgroundColor="#C00A0A"
-            onPress={this.checkIn}
-          />
-        );
+      fetch('http://progresstrackerapi.herokuapp.com/api/checkins/today', {
+        method: 'PATCH',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ dayRange: Date.now() })
+      })
     } else {
       return null;
     }
@@ -110,13 +108,14 @@ class CheckIn extends React.Component {
       t = new Date(time);
       return (
           <View style={{flexDirection: 'row'}}>
-          <Text>{`${range}: ${t.toLocaleTimeString(navigator.language,
-                {hour: '2-digit', minute:'2-digit'})}`}</Text>
+          <Text>{`${range}: `}</Text>
+          <Text>{t.toLocaleTimeString(navigator.language,
+                {hour: '2-digit', minute:'2-digit'})}</Text>
           <Icon color='green' name='check-circle' />
           </View>
       );
     } else {
-      return <Text>{`${range}: Available at ${start}`}</Text>;
+      return <Text>{`${range}: Available from ${start}`}</Text>;
     }
   }
 
@@ -125,17 +124,16 @@ class CheckIn extends React.Component {
 
     if (this.state.checkIns !== {}) {
       return (
-        <View style={{ flex: 1, flexDirection: 'column', alignItems: 'center',
+        <View style={{ flex: 1, flexDirection: 'column', alignItems: 'stretch',
                         justifyContent: 'center' }}>
-          {this.renderCheckInButton()}
-          <View>
-            {this.showTime(morning, 'Morning', '8:00am')}
+          <View style={{backgroundColor: 'lightgreen', height: 100}}>
+            {this.showTime(morning, 'Morning', '8:00-8:15am')}
           </View>
-          <View>
-            {this.showTime(lunch, 'Lunch', '1:15pm')}
+          <View style={{backgroundColor: 'lightblue', height: 100}}>
+            {this.showTime(lunch, 'Lunch', '1:15-1:30pm')}
           </View>
-          <View>
-            {this.showTime(afternoon, 'Afternoon', '4:00pm')}
+          <View style={{backgroundColor: 'lightgray', height: 100}}>
+            {this.showTime(afternoon, 'Afternoon', '4:00-4:15pm')}
           </View>
         </View>
       );
