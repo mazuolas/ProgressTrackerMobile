@@ -77,3 +77,12 @@ score3 = AssessmentScore.create({
   score: 30,
   user_id: user1.id
   })
+
+  stats1 = AssessmentStat.create({
+    name: 'A01',
+    cohort_id: 1,
+    max_score: 35,
+    avg_score: 33.6,
+    median_score: 35,
+    passing_score: 31
+    })
