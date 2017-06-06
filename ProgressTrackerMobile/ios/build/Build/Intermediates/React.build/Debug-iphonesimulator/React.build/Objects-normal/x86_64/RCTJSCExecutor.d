@@ -1,0 +1,25 @@
+dependencies: \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/React/Executors/RCTJSCExecutor.mm \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/React/Executors/RCTJSCExecutor.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/React/Base/RCTJavaScriptExecutor.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/React/Base/RCTBridgeModule.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/React/Base/RCTInvalidating.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/cxxreact/JSBundleType.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/jschelpers/JavaScriptCore.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/jschelpers/JSCWrapper.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/React/Modules/JSCSamplingProfiler.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/React/Base/RCTAssert.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/React/Base/RCTBridge+Private.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/React/Base/RCTBridge.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/React/Base/RCTBridgeDelegate.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/React/Base/RCTFrameUpdate.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/React/Modules/RCTDevSettings.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/React/Base/RCTJSCErrorHandling.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/React/Base/RCTLog.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/React/Base/RCTUtils.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/React/Base/RCTPerformanceLogger.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/React/Profiler/RCTProfile.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/React/Profiler/RCTJSCProfiler.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/React/Modules/RCTDevMenu.h

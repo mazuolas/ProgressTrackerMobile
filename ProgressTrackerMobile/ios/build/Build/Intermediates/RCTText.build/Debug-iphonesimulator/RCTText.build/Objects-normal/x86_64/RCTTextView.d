@@ -1,0 +1,33 @@
+dependencies: \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/Libraries/Text/RCTTextView.m \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/Libraries/Text/RCTTextView.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTView.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBorderStyle.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTComponent.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTPointerEvents.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/UIView+React.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTConvert.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAnimationType.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTLog.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAssert.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTUtils.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTTextDecorationLineType.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTEventDispatcher.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTUIManager.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTRootView.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTViewManager.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/Libraries/Text/RCTShadowText.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTShadowView.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/Libraries/Text/RCTText.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/Libraries/Text/RCTTextSelection.h \
+  /Users/matthewmoon/Dropbox/ProgressTrackerMobile/ProgressTrackerMobile/node_modules/react-native/Libraries/Text/RCTUITextView.h
