@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     get '/pairs', to: 'pairs#index'
     get '/strikes', to: 'strikes#index'
     get '/assessment_scores', to: 'assessment_scores#index'
+    get '/assessment_score/:name', to: 'assessment_scores#show'
   end
 end
