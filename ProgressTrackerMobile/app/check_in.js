@@ -11,24 +11,16 @@ class CheckIn extends React.Component {
       latitude: null,
       longitude: null,
       error: null,
-      checkedIn: null
+      checkIns: {}
     };
 
     this.checkIn = this.checkIn.bind(this);
-    this.renderCheckIn = this.renderCheckIn.bind(this);
+    this.renderCheckInButton = this.renderCheckInButton.bind(this);
   }
 
-  // fetch geolocation coordinates
-  componentDidMount() {
-    navigator.geolocation.getCurrentPosition( (position) => {
-      this.setState({
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
-        error: null,
-        });
-      }, (error) => this.setState({ error: error.message }),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
-    );
+  componentWillMount() {
+    this.fetchCheckins();
+    this.fetchPosition();
   }
 
   static navigationOptions = {
@@ -41,9 +33,29 @@ class CheckIn extends React.Component {
     ),
   };
 
-  // display green checked in button
-  checkInStatus() {
-    <Text>{this.state.checkedIn ? "Checked In!" : ""}</Text>
+
+  // fetch geolocation coordinates
+  fetchPosition() {
+    navigator.geolocation.getCurrentPosition( (position) => {
+      this.setState({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+        error: null,
+        });
+      }, (error) => this.setState({ error: error.message }),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+    );
+  }
+
+  fetchCheckins() {
+    return fetch('http://progresstrackerapi.herokuapp.com/api/checkins/today')
+      .then((response) => response.json())
+      .then((checkins) => {
+        this.setState({ checkIns: checkins })
+        })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   checkIn() {
@@ -57,10 +69,9 @@ class CheckIn extends React.Component {
       this.state.longitude === -122.393777)
   }
 
-  // render check in button when:
-  // 1) GPS matches App Academy coordinates
-  // 2) Time is valid
-  renderCheckIn() {
+  // 1) GPS matches coordinates
+  // 2) Valid time range
+  renderCheckInButton() {
     if (this.validLocation) {
         return (
           <Button
@@ -75,15 +86,41 @@ class CheckIn extends React.Component {
     }
   }
 
+  showTime(time) {
+    if (time) {
+      t = new Date(time);
+      return t = t.toLocaleTimeString(navigator.language,
+        {hour: '2-digit', minute:'2-digit'});
+    } else {
+      return "Not checked in."
+    }
+  }
+
   render() {
-    return (
-      <View style={{ flexGrow: 1, alignItems: 'center', justifyContent: 'center' }}>
-        {this.renderCheckIn()}
-        <Text>Latitude: {this.state.latitude}</Text>
-        <Text>Longitude: {this.state.longitude}</Text>
-        {this.state.error ? <Text>Error: {this.state.error}</Text> : null}
-      </View>
-    );
+    const { morning, lunch, afternoon } = this.state.checkIns;
+    if (this.state.checkIns !== {}) {
+      return (
+        <View style={{ flex: 1, flexDirection: 'column',
+                        justifyContent: 'center',
+        }}>
+          {this.renderCheckInButton()}
+          <Text>
+            Morning: {this.showTime(morning)}
+          </Text>
+          <Text>
+            Lunch: {lunch ? lunch : "Not checked in"}
+          </Text>
+          <Text>
+            Afternoon: {afternoon ? afternoon : "Not checked in"}
+          </Text>
+          <Text>Latitude: {this.state.latitude}</Text>
+          <Text>Longitude: {this.state.longitude}</Text>
+          {this.state.error ? <Text>Error: {this.state.error}</Text> : null}
+        </View>
+      );
+    } else {
+      return null;
+    }
   }
 }
 

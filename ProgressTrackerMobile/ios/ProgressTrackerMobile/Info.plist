@@ -42,11 +42,13 @@
 	<string/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
+	    <key>NSAllowsArbitraryLoads</key>
+	    <true/>
 	    <key>NSExceptionDomains</key>
 	    <dict>
-	        <key>localhost</key>
+	        <key>progresstrackerapi.herokuapp.com</key>
 	        <dict>
-	            <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+	            <key>NSExceptionAllowsInsecureHTTPLoads</key>
 	            <true/>
 	        </dict>
 	    </dict>
