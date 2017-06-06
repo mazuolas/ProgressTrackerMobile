@@ -20,6 +20,8 @@ Unofficial mobile version of the App Academy Progress Tracker for students.  Pro
 Simple and intuitive navigation across the bottom.  With OAuth splash page.
 
 ![wireframe](/docs/wireframe_ptaa.png)
+![wireframe](/docs/checkin_stats_wireframe.png)
+![wireframe](/docs/profile_classmates_wireframe.png)
 
 ### Technologies and Technical Challenges
 
