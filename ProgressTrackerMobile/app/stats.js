@@ -13,10 +13,32 @@ class Stats extends React.Component {
     ),
   };
 
+  constructor(props){
+    super(props);
+    this.state = {name: null};
+    fetch(`https://progresstrackerapi.herokuapp.com/api/day/today`)
+      .then((response) => response.json())
+      .then((responseJson) => {
+        this.setState({assessments: responseJson})
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+      // .then((res) => this.setState({assessments: res.json()}))
+  }
+
   render() {
+    const assessments = this.state.assessments;
+    if (!assessments) {
+      return (
+        <Text>Stats Page</Text>
+      );
+    }
     return (
-      <Text>Stats Page</Text>
-    );
+      <View>
+        <Text>{assessments.name}</Text>
+      </View>
+    )
   }
 }
 
