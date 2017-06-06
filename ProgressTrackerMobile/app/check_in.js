@@ -11,6 +11,7 @@ class CheckIn extends React.Component {
       latitude: null,
       longitude: null,
       error: null,
+      dayRange: null,
       checkIns: {}
     };
 
@@ -21,6 +22,7 @@ class CheckIn extends React.Component {
   componentWillMount() {
     this.fetchCheckins();
     this.fetchPosition();
+    this.getDayRange();
   }
 
   static navigationOptions = {
@@ -62,6 +64,23 @@ class CheckIn extends React.Component {
     this.setState({ checkedIn: true });
   }
 
+  getDayRange() {
+    const time = new Date(Date.now());
+    const hour = time.getHours();
+    const minutes = time.getMinutes();
+    // 8:00 - 9:00am
+    if (hour === 8 || (hour === 9 && minutes === 0)) {
+      this.setState({dayRange: 'morning'});
+    // 1:15 - 1:30pm
+    } else if (hour === 13 && (minutes >= 15 && minutes <= 30) {
+      this.setState({dayRange: 'lunch'});
+    // 4:00 - 4:15pm
+  } else if (hour === 16 && minutes <= 15) {
+      this.setState({dayRange: 'afternoon'});
+    } else {
+      this.setState({ dayRange: null });
+    }
+  }
 
   // App Academy location: 37.791258, -122.393777
   validLocation() {
@@ -72,7 +91,7 @@ class CheckIn extends React.Component {
   // 1) GPS matches coordinates
   // 2) Valid time range
   renderCheckInButton() {
-    if (this.validLocation) {
+    if (this.validLocation && this.state.dayRange !== null) {
         return (
           <Button
             title="CHECK IN"
@@ -82,40 +101,46 @@ class CheckIn extends React.Component {
           />
         );
     } else {
-      this.checkInStatus();
+      return null;
     }
   }
 
   showTime(time) {
     if (time) {
       t = new Date(time);
-      return t = t.toLocaleTimeString(navigator.language,
-        {hour: '2-digit', minute:'2-digit'});
+      return (
+          <View>
+            <Icon
+              color='green'
+              name='check-circle'
+            />
+            <Text>{t.toLocaleTimeString(navigator.language,
+                {hour: '2-digit', minute:'2-digit'})}</Text>
+          </View>
+      );
     } else {
-      return "Not checked in."
+      return <Text>Not checked in</Text>;
     }
   }
 
   render() {
     const { morning, lunch, afternoon } = this.state.checkIns;
+
     if (this.state.checkIns !== {}) {
       return (
-        <View style={{ flex: 1, flexDirection: 'column',
-                        justifyContent: 'center',
-        }}>
+        <View style={{ flex: 1, flexDirection: 'column', alignItems: 'center',
+                        justifyContent: 'center' }}>
           {this.renderCheckInButton()}
+          <Text>Morning</Text>
+          <View>
+            {this.showTime(morning)}
+          </View>
           <Text>
-            Morning: {this.showTime(morning)}
+            Lunch: {this.showTime(lunch)}
           </Text>
           <Text>
-            Lunch: {lunch ? lunch : "Not checked in"}
+            Afternoon: {this.showTime(afternoon)}
           </Text>
-          <Text>
-            Afternoon: {afternoon ? afternoon : "Not checked in"}
-          </Text>
-          <Text>Latitude: {this.state.latitude}</Text>
-          <Text>Longitude: {this.state.longitude}</Text>
-          {this.state.error ? <Text>Error: {this.state.error}</Text> : null}
         </View>
       );
     } else {
