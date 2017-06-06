@@ -26,7 +26,7 @@ class Api::CheckinsController < ApplicationController
         user_id: current_user.id,
         day_id: Day.today(current_user.cohort_id).id
         })
-
+    end
     @checkin.update(checkin_params)
     render :show
   end
