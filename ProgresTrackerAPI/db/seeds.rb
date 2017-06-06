@@ -27,29 +27,38 @@ user2 = User.create({
   cohort_id: 1
   })
 
-day1 = Day.create({
-  name: 'W10D6',
-  date: Date.today,
-  cohort_id: 1
-  })
+  week = 11
+  day = 0
+  30.times do |x|
+    day += 1
+    if day > 7
+      week += 1
+      day = day%7
+    end
+    Day.create({
+      name: "W#{week}D#{day}",
+      date: Date.parse('2017-06-05') + x,
+      cohort_id: 1
+      })
+    end
 
 checkin1 = Checkin.create({
   user_id: user1.id,
-  day_id: day1.id,
+  day_id: Day.today(1).id,
   morning: Time.now
   })
 
 strike1 = Strike.create({
   note: 'late morning checkin',
   user_id: user1.id,
-  day_id: day1.id
+  day_id: Day.today(1).id
   })
 
 pair1 = Pair.create({
   user_id: user1.id,
   partner_id: user2.id,
   workstation: 'Golden Gate 1',
-  day_id: day1.id,
+  day_id: Day.today(1).id,
   score: 100
   })
 
