@@ -72,10 +72,10 @@ class CheckIn extends React.Component {
     if (hour === 8 || (hour === 9 && minutes === 0)) {
       this.setState({dayRange: 'morning'});
     // 1:15 - 1:30pm
-    } else if (hour === 13 && (minutes >= 15 && minutes <= 30) {
+    } else if (hour === 13 && (minutes >= 15 && minutes <= 30)) {
       this.setState({dayRange: 'lunch'});
     // 4:00 - 4:15pm
-  } else if (hour === 16 && minutes <= 15) {
+    } else if (hour === 16 && minutes <= 15) {
       this.setState({dayRange: 'afternoon'});
     } else {
       this.setState({ dayRange: null });
@@ -105,21 +105,18 @@ class CheckIn extends React.Component {
     }
   }
 
-  showTime(time) {
+  showTime(time, range, start) {
     if (time) {
       t = new Date(time);
       return (
-          <View>
-            <Icon
-              color='green'
-              name='check-circle'
-            />
-            <Text>{t.toLocaleTimeString(navigator.language,
-                {hour: '2-digit', minute:'2-digit'})}</Text>
+          <View style={{flexDirection: 'row'}}>
+          <Text>{`${range}: ${t.toLocaleTimeString(navigator.language,
+                {hour: '2-digit', minute:'2-digit'})}`}</Text>
+          <Icon color='green' name='check-circle' />
           </View>
       );
     } else {
-      return <Text>Not checked in</Text>;
+      return <Text>{`${range}: Available at ${start}`}</Text>;
     }
   }
 
@@ -131,16 +128,15 @@ class CheckIn extends React.Component {
         <View style={{ flex: 1, flexDirection: 'column', alignItems: 'center',
                         justifyContent: 'center' }}>
           {this.renderCheckInButton()}
-          <Text>Morning</Text>
           <View>
-            {this.showTime(morning)}
+            {this.showTime(morning, 'Morning', '8:00am')}
           </View>
-          <Text>
-            Lunch: {this.showTime(lunch)}
-          </Text>
-          <Text>
-            Afternoon: {this.showTime(afternoon)}
-          </Text>
+          <View>
+            {this.showTime(lunch, 'Lunch', '1:15pm')}
+          </View>
+          <View>
+            {this.showTime(afternoon, 'Afternoon', '4:00pm')}
+          </View>
         </View>
       );
     } else {
