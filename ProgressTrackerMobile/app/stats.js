@@ -59,6 +59,7 @@ class Stats extends React.Component {
         <Text
           style={{padding: 20}}
           >Your Assessments</Text>
+        <BarGraph details={'A01'}/>
         {this.state.details}
           <ListView
             dataSource={this.state.dataSource}
