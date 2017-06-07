@@ -10,10 +10,13 @@ class LogIn extends React.Component{
   }
 
   _onPress() {
-    // fetch('http://github.com/login/oauth/authorize', {
-    //   headers: config.githubAuthId
-    // })
-    // .then(response => console.log(response))
+    const { navigate } = this.props.navigation;
+
+    fetch('http://github.com/login/oauth/authorize', {
+      headers: config.githubAuthId
+    })
+    .then(response => console.log(response))
+    .then(navigate("Navigate"))
   }
 
   render(){
@@ -35,7 +38,7 @@ class LogIn extends React.Component{
                        justifyContent: 'center',
                        borderRadius: 0}}
                loading={false}
-               onPress={() => navigate("Navigate")}
+               onPress={this._onPress.bind(this)}
                title="Sign-In with Github"
                color="white" />
       </View>
