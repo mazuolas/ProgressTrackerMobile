@@ -14,6 +14,7 @@ Unofficial mobile version of the App Academy Progress Tracker for students.  Pro
 - [ ] Workstation and Peer assignments
 - [ ] Ruby on Rails Backend
 - [ ] Heroku hosted server
+- [ ] Demo site
 
 ### Wireframe
 
