@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Button, ListView} from 'react-native';
+import { Text, View, Button, ListView, TouchableHighlight} from 'react-native';
 import { Icon } from 'react-native-elements';
 
 class Stats extends React.Component {
@@ -14,9 +14,11 @@ class Stats extends React.Component {
 
   constructor(props){
     super(props);
-    this.state = {dataSource: null};
+    this.state = {
+      details: null,
+      dataSource: null};
   }
-  componentWillMount(){
+  componentDidMount(){
     //fetch list of assessents
     return fetch(`https://progresstrackerapi.herokuapp.com/api/assessment_scores`)
     .then((response) => response.json())
@@ -28,18 +30,23 @@ class Stats extends React.Component {
   }
 
   buildList(assessments){
-    let assessmentsArray = [];
-    Object.keys(assessments).forEach((key)=>assessmentsArray.push(assessments[key]));
+    let assessmentsArray = Object.keys(assessments).map((key)=>assessments[key]);
     let dataSource = new ListView.DataSource({rowHasChanged:(r1,r2)=>r1 !== r2});
     this.setState({dataSource: dataSource.cloneWithRows(assessmentsArray)});
   }
 
   renderRow(assessment){
     return(
-      <Text
+      <Button
         style={{backgroundColor: 'lightgreen', fontSize: 30}}
-        >{assessment.assessment_name} Score: {assessment.score}</Text>
+        title={assessment.assessment_name}
+        onPress={this.showDetails(assessment.assessment_name)}
+        />
     )
+  }
+
+  showDetails(assessment){
+    return () => (this.setState({details: <Text>{assessment}</Text> }))
   }
 
   render() {
@@ -49,12 +56,13 @@ class Stats extends React.Component {
     return (
       <View>
         <Text>Your Assessments</Text>
-        <ListView
-          dataSource={this.state.dataSource}
-          renderRow={this.renderRow.bind(this)}
-          style={{
-          height: 400
-          }}/>
+        {this.state.details}
+          <ListView
+            dataSource={this.state.dataSource}
+            renderRow={this.renderRow.bind(this)}
+            pageSize={6}
+            initialListSize={6}
+            />
       </View>
     )
   }
