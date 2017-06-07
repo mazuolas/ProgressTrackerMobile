@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Text, View, Button } from 'react-native';
-import { TabNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
 class Profile extends React.Component {
