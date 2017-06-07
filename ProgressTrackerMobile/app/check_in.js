@@ -88,7 +88,6 @@ class CheckIn extends React.Component {
   // 2) Valid time range
   checkInUser() {
     const dayRange =  this.state.dayRange;
-    console.log("check in");
     if (this.validLocation && this.state.dayRange !== null) {
       fetch('http://progresstrackerapi.herokuapp.com/api/checkins/today', {
         method: 'PATCH',
@@ -96,7 +95,7 @@ class CheckIn extends React.Component {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ dayRange: Date.now() })
+        body: JSON.stringify({ dayRange: new Date(Date.now()) })
       })
     } else {
       return null;
