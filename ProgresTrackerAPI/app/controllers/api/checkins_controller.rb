@@ -34,6 +34,6 @@ class Api::CheckinsController < ApplicationController
   private
 
   def checkin_params
-    params.require(:checkin).premit(:morning, :lunch, :afternoon)
+    params.require(:checkin).permit(:morning, :lunch, :afternoon)
   end
 end
