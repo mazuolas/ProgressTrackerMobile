@@ -17,28 +17,28 @@ class Stats extends React.Component {
     super(props);
     this.state = {
       details: null,
-      dataSource: null};
-  }
-  componentDidMount(){
-    //fetch list of assessents
-    return fetch(`https://progresstrackerapi.herokuapp.com/api/assessment_scores`)
-    .then((response) => response.json())
-    .then((responseJson) => (this.buildList(responseJson)))
-    .catch((error) => {
-      console.error(error);
-    });
+      dataSource: null,
+      assessments: {}
+    };
 
+    fetch(`https://progresstrackerapi.herokuapp.com/api/assessment_scores`)
+      .then((response) => response.json())
+      .then((responseJson) => (this.setState({assessments: responseJson})))
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
-  buildList(assessments){
-    let assessmentsArray = Object.keys(assessments).map((key)=>assessments[key]);
+  buildList(){
+    let assessmentsArray = Object.keys(this.state.assessments).map((key)=>this.state.assessments[key]);
     let dataSource = new ListView.DataSource({rowHasChanged:(r1,r2)=>r1 !== r2});
-    this.setState({dataSource: dataSource.cloneWithRows(assessmentsArray)});
+    return dataSource.cloneWithRows(assessmentsArray);
   }
 
   renderRow(assessment){
     return(
       <Button
+        key={assessment.assessment_name}
         style={{backgroundColor: 'lightgreen', fontSize: 30}}
         title={assessment.assessment_name}
         onPress={this.showDetails(assessment.assessment_name)}
@@ -47,22 +47,25 @@ class Stats extends React.Component {
   }
 
   showDetails(assessment){
-    return () => (this.setState({details: <BarGraph details={assessment}/> }))
+    return () => {
+      this.setState({details: assessment })
+      this.render();
+    }
   }
 
   render() {
-    if (!this.state.dataSource) {
+    if (!this.state.assessments) {
       return null
     }
+    console.log(this.state.details);
     return (
       <View>
         <Text
           style={{padding: 20}}
           >Your Assessments</Text>
-        <BarGraph details={'A01'}/>
-        {this.state.details}
+          <BarGraph details={this.state.details}/>
           <ListView
-            dataSource={this.state.dataSource}
+            dataSource={this.buildList()}
             renderRow={this.renderRow.bind(this)}
             pageSize={6}
             initialListSize={6}
