@@ -19,7 +19,6 @@ class CheckIn extends React.Component {
 
   componentDidMount() {
     this.fetchCheckins();
-    //this.fetchPosition();
   }
 
   static navigationOptions = {
