@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, ListView } from 'react-native';
 import { TabNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
@@ -16,27 +16,39 @@ class Stats extends React.Component {
   constructor(props){
     super(props);
     this.state = {name: null};
-    fetch(`https://progresstrackerapi.herokuapp.com/api/day/today`)
+    fetch(`https://progresstrackerapi.herokuapp.com/api/assessment_scores`)
       .then((response) => response.json())
-      .then((responseJson) => {
-        this.setState({assessments: responseJson})
-      })
+      .then((responseJson) => (this.buildList(responseJson)))
+      .then(() => this.forceUpdate())
       .catch((error) => {
         console.error(error);
       });
-      // .then((res) => this.setState({assessments: res.json()}))
+  }
+
+  buildList(assessments){
+    let assessmentsArray = [];
+    Object.keys(assessments).forEach((key)=>assessmentsArray.push(assessments[key]));
+    const dataSource = new ListView.DataSource({rowHasChanged:(r1,r2)=>r1.guid!=r2.guid});
+    this.setState({dataSource: dataSource.cloneWithRows(assessmentsArray)});
+
+  }
+
+  renderRow(assessment){
+    return(
+      <Text>{assessment.assessment_name} Score: {assessment.score}</Text>
+    )
   }
 
   render() {
-    const assessments = this.state.assessments;
-    if (!assessments) {
-      return (
-        <Text>Stats Page</Text>
-      );
+    if (!this.state.dataSource) {
+      return null
     }
     return (
       <View>
-        <Text>{assessments.name}</Text>
+        <Text>Your Assessments</Text>
+        <ListView
+          dataSource={this.state.dataSource}
+          renderRow={this.renderRow}/>
       </View>
     )
   }
