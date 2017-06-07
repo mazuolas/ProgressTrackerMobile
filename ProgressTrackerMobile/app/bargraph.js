@@ -9,9 +9,8 @@ class BarGraph extends React.Component {
       name: props.details
     }
   }
-  componentWillReceiveProps(){
-    console.log(`https://progresstrackerapi.herokuapp.com/api/assessment_score/${this.props.details}`);
-    fetch(`https://progresstrackerapi.herokuapp.com/api/assessment_score/${this.props.details}`)
+  componentWillReceiveProps(newProps){
+    fetch(`https://progresstrackerapi.herokuapp.com/api/assessment_score/${newProps.details}`)
     .then((response) => response.json())
     .then((stats) => this.setState(stats))
   }
@@ -22,12 +21,12 @@ class BarGraph extends React.Component {
     }
     return (
       <View>
-        <Text>{this.state.name}</Text>
-        <Text>{this.state.score}</Text>
-        <Text>{this.state.avg_score}</Text>
-        <Text>{this.state.max_score}</Text>
-        <Text>{this.state.median_score}</Text>
-        <Text>{this.state.passing_score}</Text>
+        <Text>{this.state.assessment_name}</Text>
+        <Text>your socre: {this.state.score}</Text>
+        <Text>average: {this.state.avg_score}</Text>
+        <Text>max: {this.state.max_score}</Text>
+        <Text>median: {this.state.median_score}</Text>
+        <Text>passing: {this.state.passing_score}</Text>
       </View>
     )
   }

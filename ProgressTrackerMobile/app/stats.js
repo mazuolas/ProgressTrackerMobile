@@ -57,7 +57,6 @@ class Stats extends React.Component {
     if (!this.state.assessments) {
       return null
     }
-    console.log(this.state.details);
     return (
       <View>
         <Text
