@@ -17,12 +17,9 @@ class CheckIn extends React.Component {
 
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.fetchCheckins();
     this.fetchPosition();
-    this.getDayRange();
-    // auto check in user
-    //this.checkInUser();
   }
 
   static navigationOptions = {
@@ -43,7 +40,7 @@ class CheckIn extends React.Component {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
         error: null,
-        });
+      }, this.getDayRange);
       }, (error) => this.setState({ error: error.message }),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
     );
@@ -64,23 +61,25 @@ class CheckIn extends React.Component {
     const time = new Date(Date.now());
     const hour = time.getHours();
     const minutes = time.getMinutes();
+    let dayRange;
     // 8:00 - 9:00am
-    if (hour === 8 || (hour === 9 && minutes === 0)) {
-      this.setState({dayRange: 'morning'});
+    if (hour === 8 || (hour === 9)) {
+      dayRange = 'morning';
     // 1:15 - 1:30pm
     } else if (hour === 13 && (minutes >= 15 && minutes <= 30)) {
-      this.setState({dayRange: 'lunch'});
+      dayRange = 'lunch';
     // 4:00 - 4:15pm
     } else if (hour === 16 && minutes <= 15) {
-      this.setState({dayRange: 'afternoon'});
+      dayRange = 'afternoon';
     } else {
-      this.setState({ dayRange: null });
+      dayRange = 'n/a';
     }
+    this.setState({dayRange},this.checkInUser);
   }
 
   // App Academy location: 37.791258, -122.393777
   validLocation() {
-    (this.state.latitude === 37.791258 &&
+    return (this.state.latitude === 37.791258 &&
       this.state.longitude === -122.393777)
   }
 
@@ -88,6 +87,7 @@ class CheckIn extends React.Component {
   // 2) Valid time range
   checkInUser() {
     const dayRange =  this.state.dayRange;
+    debugger;
     if (this.validLocation && this.state.dayRange !== null) {
       fetch('http://progresstrackerapi.herokuapp.com/api/checkins/today', {
         method: 'PATCH',
@@ -126,7 +126,7 @@ class CheckIn extends React.Component {
         <View style={{ flex: 1, flexDirection: 'column', alignItems: 'stretch',
                         justifyContent: 'center' }}>
           <View style={{backgroundColor: 'lightgreen', height: 100}}>
-            {this.showTime(morning, 'Morning', '8:00-8:15am')}
+            {this.showTime(morning, 'Morning', '8:00-9:00am')}
           </View>
           <View style={{backgroundColor: 'lightblue', height: 100}}>
             {this.showTime(lunch, 'Lunch', '1:15-1:30pm')}
