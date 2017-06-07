@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, Button, ListView, TouchableHighlight} from 'react-native';
 import { Icon } from 'react-native-elements';
+import  BarGraph  from './bargraph';
 
 class Stats extends React.Component {
   static navigationOptions = {
@@ -46,7 +47,7 @@ class Stats extends React.Component {
   }
 
   showDetails(assessment){
-    return () => (this.setState({details: <Text>{assessment}</Text> }))
+    return () => (this.setState({details: <BarGraph details={assessment}/> }))
   }
 
   render() {
@@ -55,7 +56,9 @@ class Stats extends React.Component {
     }
     return (
       <View>
-        <Text>Your Assessments</Text>
+        <Text
+          style={{padding: 20}}
+          >Your Assessments</Text>
         {this.state.details}
           <ListView
             dataSource={this.state.dataSource}
