@@ -1,20 +1,17 @@
 import React from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { SocialIcon } from 'react-native-elements';
+import * as config from '../config/config';
 
 class App extends React.Component{
-  render(){
+  _onPress() {
+    fetch('http://github.com/login/oauth/authorize', {
+      headers: config.githubAuthId
+    })
+    .then(response => console.log(response))
+  }
 
-    let socialIcon = (<SocialIcon
-                type="github"
-                button
-                style={{backgroundColor: '#ff3850',
-                        marginBottom: 50,
-                        justifyContent: 'center',
-                        borderRadius: 0}}
-                loading={false}
-                title="Sign-In with Github"
-                color="white" />)
+  render(){
     return(
       <View style={{flex: 1, justifyContent: 'space-between'}}>
           <View></View>
@@ -24,7 +21,17 @@ class App extends React.Component{
                    height: 200,
                    alignSelf: 'center'
                  }}/>
-            {socialIcon}
+         <SocialIcon
+               type="github"
+               button={true}
+               style={{backgroundColor: '#ff3850',
+                       marginBottom: 50,
+                       justifyContent: 'center',
+                       borderRadius: 0}}
+               loading={false}
+               onPress={this._onPress}
+               title="Sign-In with Github"
+               color="white" />
       </View>
     )
 
