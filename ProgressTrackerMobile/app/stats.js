@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Button, ListView } from 'react-native';
-import { TabNavigator } from 'react-navigation';
+import { Text, View, Button, ListView} from 'react-native';
 import { Icon } from 'react-native-elements';
 
 class Stats extends React.Component {
