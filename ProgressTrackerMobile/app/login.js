@@ -3,15 +3,21 @@ import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { SocialIcon } from 'react-native-elements';
 import * as config from '../config/config';
 
-class App extends React.Component{
+
+class LogIn extends React.Component{
+  static navigationOptions = {
+    title: 'Progress Tracker Mobile'
+  }
+
   _onPress() {
-    fetch('http://github.com/login/oauth/authorize', {
-      headers: config.githubAuthId
-    })
-    .then(response => console.log(response))
+    // fetch('http://github.com/login/oauth/authorize', {
+    //   headers: config.githubAuthId
+    // })
+    // .then(response => console.log(response))
   }
 
   render(){
+    const { navigate } = this.props.navigation;
     return(
       <View style={{flex: 1, justifyContent: 'space-between'}}>
           <View></View>
@@ -29,7 +35,7 @@ class App extends React.Component{
                        justifyContent: 'center',
                        borderRadius: 0}}
                loading={false}
-               onPress={this._onPress}
+               onPress={() => navigate("Navigate")}
                title="Sign-In with Github"
                color="white" />
       </View>
@@ -38,4 +44,5 @@ class App extends React.Component{
   }
 }
 
-export default App;
+
+export default LogIn;

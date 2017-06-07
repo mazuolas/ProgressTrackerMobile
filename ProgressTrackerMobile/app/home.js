@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, Platform, Linking } from 'react-native';
 import { Icon } from 'react-native-elements';
 
 class Home extends React.Component {
@@ -11,6 +11,27 @@ class Home extends React.Component {
         name='home'/>
     ),
   };
+
+  componentDidMount() {
+    Linking.addEventListener('url', this.handleOpenURL);
+  }
+
+  componentWillUnmount(){
+    Linking.removeEventListener('url', this.handleOpenURL);
+  }
+
+  handleOpenURL = ( event ) => {
+    this.navigate(event.url);
+  }
+
+  navigate = ( url ) => {
+    const { navigate } = this.props.navigation;
+    const route = url.replace(/.*?:\/\//g, '');
+
+    if (route === 'home') {
+      navigate('Home')
+    };
+  }
 
   render() {
     return (

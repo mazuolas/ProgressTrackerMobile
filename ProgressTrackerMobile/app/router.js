@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { TabNavigator } from 'react-navigation';
+import { AppRegistry } from 'react-native';
 import Home from './home';
 import Classmates from './classmates';
 import Stats from './stats';

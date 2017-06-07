@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 import { Router } from './app/router';
-import App from './app/app';
+import LogIn from './app/login';
 
-AppRegistry.registerComponent('ProgressTrackerMobile', () => App);
+const StackRouter = StackNavigator({
+  Home: {
+    screen: LogIn
+  },
+  Navigate : {
+    screen: Router
+  }
+})
+
+AppRegistry.registerComponent('ProgressTrackerMobile', () => StackRouter);
