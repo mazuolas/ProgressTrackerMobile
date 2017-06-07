@@ -1,1 +1,1 @@
-../../../../FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FIRApp.h
+#import <FirebaseCore/FIRApp.h>

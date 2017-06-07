@@ -1,1 +1,1 @@
-../../../../FirebaseAnalytics/Frameworks/FirebaseAnalytics.framework/Headers/FIROptions.h
+#import <FirebaseCore/FIROptions.h>
