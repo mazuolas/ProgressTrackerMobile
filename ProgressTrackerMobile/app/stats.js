@@ -36,21 +36,32 @@ class Stats extends React.Component {
   }
 
   renderRow(assessment){
+    console.log(assessment);
+    let graph = null;
+    if (this.state.details === assessment.assessment_name) {
+      graph = <BarGraph details={assessment.assessment_name}/>
+    }
     return(
-      <Button
-        key={assessment.assessment_name}
-        style={{backgroundColor: 'lightgreen', fontSize: 30}}
-        title={assessment.assessment_name}
-        onPress={this.showDetails(assessment.assessment_name)}
-        />
+      <View>
+        <Button
+          key={assessment.assessment_name}
+          style={{backgroundColor: 'lightgreen', fontSize: 30}}
+          title={assessment.assessment_name}
+          onPress={this.showDetails(assessment.assessment_name)}
+          />
+        {graph}
+      </View>
     )
   }
 
   showDetails(assessment){
     return () => {
       this.setState({details: assessment })
-      this.render();
     }
+  }
+
+  renderFooter(){
+    return null
   }
 
   render() {
@@ -62,12 +73,13 @@ class Stats extends React.Component {
         <Text
           style={{padding: 20}}
           >Your Assessments</Text>
-          <BarGraph details={this.state.details}/>
           <ListView
             dataSource={this.buildList()}
             renderRow={this.renderRow.bind(this)}
-            pageSize={6}
-            initialListSize={6}
+            pageSize={600}
+            initialListSize={600}
+            enableEmptySections={true}
+            renderFooter={this.renderFooter.bind(this)}
             />
       </View>
     )

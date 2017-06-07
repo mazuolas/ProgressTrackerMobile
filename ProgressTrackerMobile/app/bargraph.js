@@ -9,8 +9,8 @@ class BarGraph extends React.Component {
       name: props.details
     }
   }
-  componentWillReceiveProps(newProps){
-    fetch(`https://progresstrackerapi.herokuapp.com/api/assessment_score/${newProps.details}`)
+  componentWillMount(){
+    fetch(`https://progresstrackerapi.herokuapp.com/api/assessment_score/${this.props.details}`)
     .then((response) => response.json())
     .then((stats) => this.setState(stats))
   }
