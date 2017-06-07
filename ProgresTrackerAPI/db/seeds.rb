@@ -86,3 +86,21 @@ score3 = AssessmentScore.create({
     median_score: 35,
     passing_score: 31
     })
+
+  stats2 = AssessmentStat.create({
+    name: 'A02',
+    cohort_id: 1,
+    max_score: 49,
+    avg_score: 44.4,
+    median_score: 47,
+    passing_score: 44
+    })
+
+  stats3 = AssessmentStat.create({
+    name: 'A03',
+    cohort_id: 1,
+    max_score: 30,
+    avg_score: 27.7,
+    median_score: 30,
+    passing_score: 24
+    })
