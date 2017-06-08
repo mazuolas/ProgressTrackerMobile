@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TouchableOpacity, Linking } from 'react-native';
 import { SocialIcon } from 'react-native-elements';
 import * as config from '../config/config';
 
@@ -11,12 +11,8 @@ class LogIn extends React.Component{
 
   _onPress() {
     const { navigate } = this.props.navigation;
-
-    fetch('http://github.com/login/oauth/authorize', {
-      headers: config.githubAuthId
-    })
-    .then(response => console.log(response))
-    .then(navigate("Navigate"))
+    fetch('https://github.com/login/oauth/authorize?', config.githubAuthId)
+    .then(response => {Linking.openURL(response.url)})
   }
 
   render(){
