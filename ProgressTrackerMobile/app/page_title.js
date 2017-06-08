@@ -11,9 +11,7 @@ class PageTitle extends React.Component {
   render() {
     return (
       <View style={styleTitle}>
-        <View>
-          <Text style={styleText}>{this.props.title}</Text>
-        </View>
+        <Text style={styleText}>{this.props.title}</Text>
       </View>
     );
   }

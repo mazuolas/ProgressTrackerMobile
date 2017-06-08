@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { Icon, Button, Divider } from 'react-native-elements';
-import { styleCheckedIn, styleToCheckIn, styleText, styleTextTitle,
-         styleCheckIns } from './styles/check_in';
+import { styleCheckedIn, styleToCheckIn,
+        styleText, styleTextTitle} from './styles/check_in';
 import { styleTitle } from './styles/page_title';
 import PageTitle from './page_title';
 

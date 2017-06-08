@@ -1,17 +1,10 @@
-export const styleCheckIns = {
-  flex: 1,
-  flexDirection: 'column',
-  alignItems: 'stretch',
-  justifyContent: 'center'
-};
-
 export const styleCheckedIn = {
   backgroundColor: 'rgba(152,251,152,.6)',
-  height: 185,
   alignItems: 'center',
   justifyContent: 'center',
   flexDirection: 'row',
   borderWidth: 0.5,
+  height: 185,
   borderColor: 'black'
 };
 
@@ -29,10 +22,10 @@ export const styleTextTitle = {
 
 export const styleToCheckIn = {
   backgroundColor: 'rgba(211,211,211,.5)',
-  height: 185,
   alignItems: 'center',
   justifyContent: 'center',
   flexDirection: 'row',
+  height: 185,
   borderWidth: 0.5,
   borderColor: 'black'
 };
