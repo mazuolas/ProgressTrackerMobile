@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import AnimatedBar from './animated_bar.js';
 
 class BarGraph extends React.Component {
 
@@ -19,13 +20,19 @@ class BarGraph extends React.Component {
     if (!this.state.score) {
       return null
     }
+    let max = this.state.max_score;
+    let score = this.state.score/max;
+    let avg_score = this.state.avg_score/max;
+    let median_score = this.state.median_score/max;
     return (
       <View>
         <Text>{this.state.assessment_name}</Text>
-        <Text>your socre: {this.state.score}</Text>
+        <Text>your socre: {this.state.scor}</Text>
+        <AnimatedBar value={score} />
         <Text>average: {this.state.avg_score}</Text>
-        <Text>max: {this.state.max_score}</Text>
+        <AnimatedBar value={avg_score} />
         <Text>median: {this.state.median_score}</Text>
+        <AnimatedBar value={median_score} />
         <Text>passing: {this.state.passing_score}</Text>
       </View>
     )

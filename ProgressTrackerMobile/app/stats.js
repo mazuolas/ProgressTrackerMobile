@@ -36,7 +36,6 @@ class Stats extends React.Component {
   }
 
   renderRow(assessment){
-    console.log(assessment);
     let graph = null;
     if (this.state.details === assessment.assessment_name) {
       graph = <BarGraph details={assessment.assessment_name}/>
@@ -46,7 +45,7 @@ class Stats extends React.Component {
         <Button
           key={assessment.assessment_name}
           style={{backgroundColor: 'lightgreen', fontSize: 30}}
-          title={assessment.assessment_name}
+          title={assessment.assessment_name + ' ' + assessment.score}
           onPress={this.showDetails(assessment.assessment_name)}
           />
         {graph}
@@ -74,10 +73,9 @@ class Stats extends React.Component {
           style={{padding: 20}}
           >Your Assessments</Text>
           <ListView
+            removeClippedSubviews={false}
             dataSource={this.buildList()}
             renderRow={this.renderRow.bind(this)}
-            pageSize={600}
-            initialListSize={600}
             enableEmptySections={true}
             renderFooter={this.renderFooter.bind(this)}
             />
