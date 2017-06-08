@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
-import { Icon, Button } from 'react-native-elements';
+import { Icon, Button, Divider } from 'react-native-elements';
+import { styleCheckedIn, styleToCheckIn,
+        styleText, styleTextTitle} from './styles/check_in';
+import { styleTitle } from './styles/page_title';
+import PageTitle from './page_title';
 
 class CheckIn extends React.Component {
 
@@ -105,34 +109,47 @@ class CheckIn extends React.Component {
     if (time) {
       t = new Date(time);
       return (
-          <View style={{flexDirection: 'row'}}>
-          <Text>{`${range}: `}</Text>
-          <Text>{t.toLocaleTimeString(navigator.language,
-                {hour: '2-digit', minute:'2-digit'})}</Text>
-          <Icon color='green' name='check-circle' />
+          <View style={styleCheckedIn}>
+            <View>
+              <Text style={styleTextTitle}>{`${range} `}</Text>
+              <Text style={styleText}>
+                {`Checked-In: ${t.toLocaleTimeString(navigator.language,
+                  {hour: '2-digit', minute:'2-digit'})}`}
+              </Text>
+            </View>
           </View>
       );
     } else {
-      return <Text>{`${range}: Available from ${start}`}</Text>;
+      return (
+        <View style={styleToCheckIn}>
+          <View>
+          <Text style={styleTextTitle}>{`${range} `}</Text>
+          <Text style={styleText}>
+            {`Available ${start}`}
+          </Text>
+        </View>
+        </View>
+      );
     }
   }
 
   render() {
     const { morning, lunch, afternoon } = this.state.checkIns;
+    const title = "Today's Check-Ins";
 
     if (this.state.checkIns !== {}) {
       return (
-        <View style={{ flex: 1, flexDirection: 'column', alignItems: 'stretch',
-                        justifyContent: 'center' }}>
-          <View style={{backgroundColor: 'lightgreen', height: 100}}>
-            {this.showTime(morning, 'Morning', '8:00-9:00am')}
-          </View>
-          <View style={{backgroundColor: 'lightblue', height: 100}}>
-            {this.showTime(lunch, 'Lunch', '1:15-1:30pm')}
-          </View>
-          <View style={{backgroundColor: 'lightgray', height: 100}}>
-            {this.showTime(afternoon, 'Afternoon', '4:00-4:15pm')}
-          </View>
+        <View>
+            <PageTitle title={title} />
+            <View>
+              {this.showTime(morning, 'Morning', '8:00 - 9:00am')}
+            </View>
+            <View>
+              {this.showTime(lunch, 'Lunch', '1:15 - 1:30pm')}
+            </View>
+            <View>
+              {this.showTime(afternoon, 'Afternoon', '4:00 - 4:15pm')}
+            </View>
         </View>
       );
     } else {
