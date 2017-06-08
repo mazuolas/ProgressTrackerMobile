@@ -18,12 +18,15 @@ class Stats extends React.Component {
     this.state = {
       details: null,
       dataSource: null,
-      assessments: {}
+      assessments: {},
+      mostRecent: null,
+      list: null
     };
 
     fetch(`https://progresstrackerapi.herokuapp.com/api/assessment_scores`)
       .then((response) => response.json())
       .then((responseJson) => (this.setState({assessments: responseJson})))
+      .then(this.buildList.bind(this))
       .catch((error) => {
         console.error(error);
       });
@@ -31,8 +34,14 @@ class Stats extends React.Component {
 
   buildList(){
     let assessmentsArray = Object.keys(this.state.assessments).map((key)=>this.state.assessments[key]);
+    // if (!this.state.details) {
+      this.setState({mostRecent: assessmentsArray.pop()});
+    // } else {
+    //   this.setState({mostRecent: null})
+    // }
     let dataSource = new ListView.DataSource({rowHasChanged:(r1,r2)=>r1 !== r2});
-    return dataSource.cloneWithRows(assessmentsArray);
+    const list = dataSource.cloneWithRows(assessmentsArray)
+    this.setState({list: list});
   }
 
   renderRow(assessment){
@@ -45,7 +54,7 @@ class Stats extends React.Component {
         <Button
           color={'#C00A0A'}
           key={assessment.assessment_name}
-          title={assessment.assessment_name + ' ' + assessment.score}
+          title={assessment.assessment_name + ' Your Score: ' + assessment.score}
           onPress={this.showDetails(assessment.assessment_name)}
           />
         {graph}
@@ -55,6 +64,7 @@ class Stats extends React.Component {
 
   showDetails(assessment){
     return () => {
+      this.buildList()
       this.setState({details: assessment })
     }
   }
@@ -64,21 +74,46 @@ class Stats extends React.Component {
   }
 
   render() {
-    if (!this.state.assessments) {
+    if (!this.state.assessments || !this.state.list) {
       return null
     }
+    let header = <Text
+    style={{
+      padding: 30,
+      backgroundColor: '#C00A0A',
+      color: 'white',
+      fontSize: 20,
+      fontWeight: 'bold'
+    }}
+    >Assessments</Text>
+    if(this.state.mostRecent){
+      header = (
+        <View>
+          <Text
+          style={{
+            padding: 20,
+            backgroundColor: '#C00A0A',
+            color: 'white',
+            fontSize: 20,
+            fontWeight: 'bold',
+            textAlign: 'center'
+          }}
+          >Last Assessment: {this.state.mostRecent.assessment_name}</Text>
+          <BarGraph details={this.state.mostRecent.assessment_name}/>
+        </View>
+      )
+    }
+
     return (
       <View>
-        <Text
-          style={{padding: 20}}
-          >Your Assessments</Text>
-          <ListView
-            removeClippedSubviews={false}
-            dataSource={this.buildList()}
-            renderRow={this.renderRow.bind(this)}
-            enableEmptySections={true}
-            renderFooter={this.renderFooter.bind(this)}
-            />
+        {header}
+        <ListView
+          removeClippedSubviews={false}
+          dataSource={this.state.list}
+          renderRow={this.renderRow.bind(this)}
+          enableEmptySections={true}
+          renderFooter={this.renderFooter.bind(this)}
+          />
       </View>
     )
   }
