@@ -49,7 +49,7 @@ class Stats extends React.Component {
       title = `${assessment.assessment_name} Details`
     }
     return(
-      <View style={{backgroundColor: 'lightgreen'}}>
+      <View style={{backgroundColor: 'lightgreen', margin: 2}}>
         <Button
           color={'#C00A0A'}
           key={assessment.assessment_name}
