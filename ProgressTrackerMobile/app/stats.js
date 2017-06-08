@@ -19,7 +19,6 @@ class Stats extends React.Component {
       details: null,
       dataSource: null,
       assessments: {},
-      mostRecent: null,
       list: null
     };
 
@@ -33,28 +32,28 @@ class Stats extends React.Component {
   }
 
   buildList(){
-    let assessmentsArray = Object.keys(this.state.assessments).map((key)=>this.state.assessments[key]);
-    // if (!this.state.details) {
-      this.setState({mostRecent: assessmentsArray.pop()});
-    // } else {
-    //   this.setState({mostRecent: null})
-    // }
+    let assessmentsArray = Object.keys(this.state.assessments).map((key)=>this.state.assessments[key]).reverse();
+    if (!this.state.details) {
+      this.setState({details: assessmentsArray[0].assessment_name});
+    }
     let dataSource = new ListView.DataSource({rowHasChanged:(r1,r2)=>r1 !== r2});
-    const list = dataSource.cloneWithRows(assessmentsArray.reverse())
+    const list = dataSource.cloneWithRows(assessmentsArray);
     this.setState({list: list});
   }
 
   renderRow(assessment){
     let graph = null;
+    let title = assessment.assessment_name + ' Your Score: ' + assessment.score
     if (this.state.details === assessment.assessment_name) {
       graph = <BarGraph details={assessment.assessment_name}/>
+      title = `${assessment.assessment_name} Details`
     }
     return(
       <View style={{backgroundColor: 'lightgreen'}}>
         <Button
           color={'#C00A0A'}
           key={assessment.assessment_name}
-          title={assessment.assessment_name + ' Your Score: ' + assessment.score}
+          title={title}
           onPress={this.showDetails(assessment.assessment_name)}
           />
         {graph}
@@ -86,23 +85,6 @@ class Stats extends React.Component {
       fontWeight: 'bold'
     }}
     >Assessments</Text>
-    if(this.state.mostRecent){
-      header = (
-        <View>
-          <Text
-          style={{
-            padding: 20,
-            backgroundColor: '#C00A0A',
-            color: 'white',
-            fontSize: 20,
-            fontWeight: 'bold',
-            textAlign: 'center'
-          }}
-          >Last Assessment: {this.state.mostRecent.assessment_name}</Text>
-          <BarGraph details={this.state.mostRecent.assessment_name}/>
-        </View>
-      )
-    }
 
     return (
       <View>
