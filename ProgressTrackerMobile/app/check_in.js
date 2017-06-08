@@ -14,15 +14,11 @@ class CheckIn extends React.Component {
       dayRange: null,
       checkIns: {}
     };
-
+    this.fetchPosition = this.fetchPosition.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.fetchCheckins();
-    this.fetchPosition();
-    this.getDayRange();
-    // auto check in user
-    //this.checkInUser();
   }
 
   static navigationOptions = {
@@ -38,64 +34,71 @@ class CheckIn extends React.Component {
 
   // fetch geolocation coordinates
   fetchPosition() {
-    navigator.geolocation.getCurrentPosition( (position) => {
-      this.setState({
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
-        error: null,
-        });
-      }, (error) => this.setState({ error: error.message }),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          error: null,
+        }, this.getDayRange);
+      },
+      (error) => this.setState({ error: error.message }),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
     );
   }
 
   fetchCheckins() {
     return fetch('https://progresstrackerapi.herokuapp.com/api/checkins/today')
       .then((response) => response.json())
-      .then((checkins) => {
-        this.setState({ checkIns: checkins })
-        })
-      .catch((error) => {
-        console.error(error);
-      });
+      .then((checkins) => this.setState({ checkIns: checkins }))
+      .then(this.fetchPosition);
   }
 
   getDayRange() {
     const time = new Date(Date.now());
     const hour = time.getHours();
     const minutes = time.getMinutes();
+    let dayRange;
     // 8:00 - 9:00am
     if (hour === 8 || (hour === 9 && minutes === 0)) {
-      this.setState({dayRange: 'morning'});
+      dayRange = 'morning';
     // 1:15 - 1:30pm
     } else if (hour === 13 && (minutes >= 15 && minutes <= 30)) {
-      this.setState({dayRange: 'lunch'});
+      dayRange = 'lunch';
     // 4:00 - 4:15pm
     } else if (hour === 16 && minutes <= 15) {
-      this.setState({dayRange: 'afternoon'});
+      dayRange = 'afternoon';
     } else {
-      this.setState({ dayRange: null });
+      dayRange = null;
     }
+    this.setState({dayRange},this.checkInUser);
   }
 
   // App Academy location: 37.791258, -122.393777
   validLocation() {
-    (this.state.latitude === 37.791258 &&
+    return (this.state.latitude === 37.791258 &&
       this.state.longitude === -122.393777)
   }
 
   // 1) GPS matches coordinates
   // 2) Valid time range
+  // 3) Not already checked in
   checkInUser() {
     const dayRange =  this.state.dayRange;
+<<<<<<< HEAD
     if (this.validLocation && this.state.dayRange !== null) {
+=======
+    const requestData = { checkin: {[dayRange]: new Date(Date.now())} };
+    if (this.validLocation && this.state.dayRange !== null
+      && this.state.checkIns[dayRange] === null) {
+>>>>>>> 8296f13c94557d751540b86de30a0f7489af71eb
       fetch('https://progresstrackerapi.herokuapp.com/api/checkins/today', {
         method: 'PATCH',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ dayRange: new Date(Date.now()) })
+        body: JSON.stringify(requestData)
       })
     } else {
       return null;
@@ -126,7 +129,7 @@ class CheckIn extends React.Component {
         <View style={{ flex: 1, flexDirection: 'column', alignItems: 'stretch',
                         justifyContent: 'center' }}>
           <View style={{backgroundColor: 'lightgreen', height: 100}}>
-            {this.showTime(morning, 'Morning', '8:00-8:15am')}
+            {this.showTime(morning, 'Morning', '8:00-9:00am')}
           </View>
           <View style={{backgroundColor: 'lightblue', height: 100}}>
             {this.showTime(lunch, 'Lunch', '1:15-1:30pm')}
