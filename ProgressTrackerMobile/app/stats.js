@@ -41,8 +41,9 @@ class Stats extends React.Component {
       graph = <BarGraph details={assessment.assessment_name}/>
     }
     return(
-      <View>
+      <View style={{backgroundColor: 'lightgreen'}}>
         <Button
+          color={'#C00A0A'}
           key={assessment.assessment_name}
           title={assessment.assessment_name + ' ' + assessment.score}
           onPress={this.showDetails(assessment.assessment_name)}

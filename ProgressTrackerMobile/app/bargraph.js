@@ -56,19 +56,32 @@ class BarGraph extends React.Component {
     }
     const pageStyle = {
       justifyContent: 'space-between',
-      height: 130
+      height: 170,
+      backgroundColor: 'white',
+      paddingTop: 20,
+      paddingBottom: 20
     }
-    const passingBarStyle ={
+    const passingBarStyle = {
       position: 'absolute',
       height: 140,
       width: 2,
       backgroundColor: '#C00A0A',
+      top: 15,
       left: 120 + Math.floor(this.dim.width * .6 * passing_score),
       zIndex: 9000
     }
 
+    const passingTextStyle = {
+      fontSize: 10,
+      color: "#C00A0A",
+      position: 'absolute',
+      top: 8,
+      left: 80 + Math.floor(this.dim.width * .6 * passing_score),
+    }
+
     return (
       <View style={pageStyle}>
+        <Text style={passingTextStyle}>Passing</Text>
         <View style={passingBarStyle}></View>
         <View style={viewStyle}>
           <Text style={textStyle}>Your Score</Text>
