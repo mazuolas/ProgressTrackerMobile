@@ -40,7 +40,7 @@ class Stats extends React.Component {
     //   this.setState({mostRecent: null})
     // }
     let dataSource = new ListView.DataSource({rowHasChanged:(r1,r2)=>r1 !== r2});
-    const list = dataSource.cloneWithRows(assessmentsArray)
+    const list = dataSource.cloneWithRows(assessmentsArray.reverse())
     this.setState({list: list});
   }
 
