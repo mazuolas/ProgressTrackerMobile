@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Dimensions } from 'react-native';
+import { View, Text, Dimensions, ActivityIndicator } from 'react-native';
 import AnimatedBar from './animated_bar.js';
 
 class BarGraph extends React.Component {
@@ -18,8 +18,19 @@ class BarGraph extends React.Component {
   }
 
   render(){
+    const pageStyle = {
+      justifyContent: 'space-between',
+      height: 170,
+      backgroundColor: 'white',
+      paddingTop: 20,
+      paddingBottom: 20
+    }
+
     if (!this.state.score) {
-      return null
+      return(
+      <View style={pageStyle}>
+        <ActivityIndicator color={'#C00A0A'} size={'large'}/>
+      </View>)
     }
     let max = this.state.max_score;
     let score = this.state.score/max;
@@ -53,13 +64,6 @@ class BarGraph extends React.Component {
     const viewStyle = {
       flexDirection: 'row',
       justifyContent: 'flex-start'
-    }
-    const pageStyle = {
-      justifyContent: 'space-between',
-      height: 170,
-      backgroundColor: 'white',
-      paddingTop: 20,
-      paddingBottom: 20
     }
     const passingBarStyle = {
       position: 'absolute',
