@@ -24,7 +24,7 @@ class AnimatedBar extends Component {
     Animated.sequence([
       Animated.delay(delay),
       Animated.timing(this._width, {
-        toValue: value*this.dim.width - 20,
+        toValue: value*this.dim.width * .6,
       }),
     ]).start();
   }
