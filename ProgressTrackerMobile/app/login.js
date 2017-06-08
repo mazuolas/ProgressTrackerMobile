@@ -9,10 +9,48 @@ class LogIn extends React.Component{
     title: 'Progress Tracker Mobile'
   }
 
+
+  componentDidMount() {
+    Linking.addEventListener('url', this.handleOpenURL);
+  }
+
+  componentWillUnmount(){
+    Linking.removeEventListener('url', this.handleOpenURL);
+  }
+
+  handleOpenURL = ( event ) => {
+    let code = (event.url).split("=")[1];
+    console.log(code);
+    fetch("https://github.com/login/oauth/access_token", {
+        headers: {
+          code: code,
+          client_id: "3a58418b7ea099800860",
+          client_secret: "7d920a24dd7376688407b496224368813d26ad00",
+        },
+      "Method": "POST",
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded"
+    })
+    .then(response => console.log(response))
+    this.navigate(event.url);
+  }
+
+  navigate = ( url ) => {
+    const { navigate } = this.props.navigation;
+    const route = url.replace(/.*?:\/\//g, '');
+
+    if (route === 'home') {
+      navigate('Profile')
+    };
+  }
+
   _onPress() {
     const { navigate } = this.props.navigation;
-    fetch('https://github.com/login/oauth/authorize?', config.githubAuthId)
-    .then(response => {Linking.openURL(response.url)})
+    // fetch('https://github.com/login/oauth/authorize?', config.githubAuthId)
+    // .then(response => {
+      Linking.openURL("https://github.com/login/oauth/authorize?client_id=3a58418b7ea099800860")
+      .then(response => console.log(response))
+    // })
   }
 
   render(){
