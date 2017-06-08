@@ -6,6 +6,7 @@ class BarGraph extends React.Component {
 
   constructor(props){
     super(props);
+    this.dim = Dimensions.get('window');
     this.state = {
       name: props.details
     }
@@ -20,6 +21,12 @@ class BarGraph extends React.Component {
     if (!this.state.score) {
       return null
     }
+    let max = this.state.max_score;
+    let score = this.state.score/max;
+    let avg_score = this.state.avg_score/max;
+    let median_score = this.state.median_score/max;
+    let passing_score = this.state.passing_score/max;
+
     const textStyle = {
       width: 100,
       backgroundColor: '#C00A0A',
@@ -51,14 +58,18 @@ class BarGraph extends React.Component {
       justifyContent: 'space-between',
       height: 130
     }
+    const passingBarStyle ={
+      position: 'absolute',
+      height: 140,
+      width: 2,
+      backgroundColor: '#C00A0A',
+      left: 120 + Math.floor(this.dim.width * .6 * passing_score),
+      zIndex: 9000
+    }
 
-    let max = this.state.max_score;
-    let score = this.state.score/max;
-    let avg_score = this.state.avg_score/max;
-    let median_score = this.state.median_score/max;
-    let passing_score = this.state.passing_score/max;
     return (
       <View style={pageStyle}>
+        <View style={passingBarStyle}></View>
         <View style={viewStyle}>
           <Text style={textStyle}>Your Score</Text>
           <Text style={numberStyle}>{this.state.score}/{max}</Text>

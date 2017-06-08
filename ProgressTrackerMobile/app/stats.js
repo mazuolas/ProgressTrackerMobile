@@ -44,7 +44,6 @@ class Stats extends React.Component {
       <View>
         <Button
           key={assessment.assessment_name}
-          style={{backgroundColor: 'lightgreen', fontSize: 30}}
           title={assessment.assessment_name + ' ' + assessment.score}
           onPress={this.showDetails(assessment.assessment_name)}
           />
