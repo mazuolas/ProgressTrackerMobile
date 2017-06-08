@@ -10,13 +10,13 @@ export const styleCheckedIn = {
 
 export const styleText = {
   fontSize: 25,
-  marginTop: 10,
+  marginTop: 15,
   textAlign: 'center'
 };
 
 export const styleTextTitle = {
-  fontSize: 30,
-  marginTop: 10,
+  fontSize: 35,
+  marginBottom: 15,
   textAlign: 'center'
 };
 
