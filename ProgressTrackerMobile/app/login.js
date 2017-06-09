@@ -1,9 +1,17 @@
 import React from 'react';
 import { Text, View, Image, TouchableOpacity, Linking } from 'react-native';
 import { SocialIcon } from 'react-native-elements';
-import * as config from '../config/config';
+// import * as config from '../config/config';
 import OAuthManager from 'react-native-oauth';
 
+// Create the manager
+const manager = new OAuthManager('progresstrackermobile');
+manager.configure({
+  github: {
+    client_id: '3a58418b7ea099800860',
+    client_secret: '7d920a24dd7376688407b496224368813d26ad00'
+  }
+});
 
 class LogIn extends React.Component{
   static navigationOptions = {
@@ -22,20 +30,6 @@ class LogIn extends React.Component{
 
   handleOpenURL = ( event ) => {
     let code = (event.url).split("=")[1];
-
-    const config =  {
-    github: {
-      client_id: '3a58418b7ea099800860',
-      client_secret: '7d920a24dd7376688407b496224368813d26ad00',
-      code: code
-      }
-    }
-    // Create the manager
-    const manager = new OAuthManager('progresstrackermobile');
-    // configure the manager
-    manager.configure(config);
-    // manager.authorize('github')
-    // .then(response => console.log(response))
   }
 
   navigate = ( url ) => {
@@ -51,8 +45,10 @@ class LogIn extends React.Component{
     const { navigate } = this.props.navigation;
     // fetch('https://github.com/login/oauth/authorize?', config.githubAuthId)
     // .then(response => {
-      Linking.openURL("https://github.com/login/oauth/authorize?client_id=3a58418b7ea099800860")
+      // Linking.openURL("https://github.com/login/oauth/authorize?client_id=3a58418b7ea099800860")
     // })
+    manager.authorize('github')
+    .then( res => console.log(res))
   }
 
   render(){
