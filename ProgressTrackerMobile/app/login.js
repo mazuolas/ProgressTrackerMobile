@@ -6,12 +6,7 @@ import OAuthManager from 'react-native-oauth';
 
 // Create the manager
 const manager = new OAuthManager('progresstrackermobile');
-manager.configure({
-  github: {
-    client_id: '3a58418b7ea099800860',
-    client_secret: '7d920a24dd7376688407b496224368813d26ad00'
-  }
-});
+
 
 class LogIn extends React.Component{
   static navigationOptions = {
@@ -21,7 +16,12 @@ class LogIn extends React.Component{
 
 
   componentDidMount() {
-    Linking.addEventListener('url', this.handleOpenURL);
+    manager.configure({
+      github: {
+        client_id: '3a58418b7ea099800860',
+        client_secret: '7d920a24dd7376688407b496224368813d26ad00'
+      }
+    });
   }
 
   componentWillUnmount(){
@@ -49,6 +49,7 @@ class LogIn extends React.Component{
     // })
     manager.authorize('github')
     .then( res => console.log(res))
+    .then(manager.deauthorize('github'))
   }
 
   render(){
