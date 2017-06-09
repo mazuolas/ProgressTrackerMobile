@@ -18,35 +18,42 @@ class Stats extends React.Component {
     this.state = {
       details: null,
       dataSource: null,
-      assessments: {}
+      assessments: {},
+      list: null
     };
 
     fetch(`https://progresstrackerapi.herokuapp.com/api/assessment_scores`)
       .then((response) => response.json())
       .then((responseJson) => (this.setState({assessments: responseJson})))
+      .then(this.buildList.bind(this))
       .catch((error) => {
         console.error(error);
       });
   }
 
   buildList(){
-    let assessmentsArray = Object.keys(this.state.assessments).map((key)=>this.state.assessments[key]);
+    let assessmentsArray = Object.keys(this.state.assessments).map((key)=>this.state.assessments[key]).reverse();
+    if (!this.state.details) {
+      this.setState({details: assessmentsArray[0].assessment_name});
+    }
     let dataSource = new ListView.DataSource({rowHasChanged:(r1,r2)=>r1 !== r2});
-    return dataSource.cloneWithRows(assessmentsArray);
+    const list = dataSource.cloneWithRows(assessmentsArray);
+    this.setState({list: list});
   }
 
   renderRow(assessment){
-    console.log(assessment);
     let graph = null;
+    let title = assessment.assessment_name + ' Your Score: ' + assessment.score
     if (this.state.details === assessment.assessment_name) {
       graph = <BarGraph details={assessment.assessment_name}/>
+      title = `${assessment.assessment_name} Details`
     }
     return(
-      <View>
+      <View style={{backgroundColor: 'lightgreen', margin: 2}}>
         <Button
+          color={'#C00A0A'}
           key={assessment.assessment_name}
-          style={{backgroundColor: 'lightgreen', fontSize: 30}}
-          title={assessment.assessment_name}
+          title={title}
           onPress={this.showDetails(assessment.assessment_name)}
           />
         {graph}
@@ -56,6 +63,7 @@ class Stats extends React.Component {
 
   showDetails(assessment){
     return () => {
+      this.buildList()
       this.setState({details: assessment })
     }
   }
@@ -65,22 +73,29 @@ class Stats extends React.Component {
   }
 
   render() {
-    if (!this.state.assessments) {
+    if (!this.state.assessments || !this.state.list) {
       return null
     }
+    let header = <Text
+    style={{
+      padding: 30,
+      backgroundColor: '#C00A0A',
+      color: 'white',
+      fontSize: 20,
+      fontWeight: 'bold'
+    }}
+    >Assessments</Text>
+
     return (
       <View>
-        <Text
-          style={{padding: 20}}
-          >Your Assessments</Text>
-          <ListView
-            dataSource={this.buildList()}
-            renderRow={this.renderRow.bind(this)}
-            pageSize={600}
-            initialListSize={600}
-            enableEmptySections={true}
-            renderFooter={this.renderFooter.bind(this)}
-            />
+        {header}
+        <ListView
+          removeClippedSubviews={false}
+          dataSource={this.state.list}
+          renderRow={this.renderRow.bind(this)}
+          enableEmptySections={true}
+          renderFooter={this.renderFooter.bind(this)}
+          />
       </View>
     )
   }
