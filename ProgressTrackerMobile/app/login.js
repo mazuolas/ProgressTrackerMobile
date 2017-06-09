@@ -2,12 +2,14 @@ import React from 'react';
 import { Text, View, Image, TouchableOpacity, Linking } from 'react-native';
 import { SocialIcon } from 'react-native-elements';
 import * as config from '../config/config';
+import OAuthManager from 'react-native-oauth';
 
 
 class LogIn extends React.Component{
   static navigationOptions = {
     title: 'Progress Tracker Mobile'
   }
+
 
 
   componentDidMount() {
@@ -20,19 +22,20 @@ class LogIn extends React.Component{
 
   handleOpenURL = ( event ) => {
     let code = (event.url).split("=")[1];
-    console.log(code);
-    fetch("https://github.com/login/oauth/access_token", {
-        headers: {
-          code: code,
-          client_id: "3a58418b7ea099800860",
-          client_secret: "7d920a24dd7376688407b496224368813d26ad00",
-        },
-      "Method": "POST",
-      "Accept": "application/json",
-      "Content-Type": "application/x-www-form-urlencoded"
-    })
-    .then(response => console.log(response))
-    this.navigate(event.url);
+
+    const config =  {
+    github: {
+      client_id: '3a58418b7ea099800860',
+      client_secret: '7d920a24dd7376688407b496224368813d26ad00',
+      code: code
+      }
+    }
+    // Create the manager
+    const manager = new OAuthManager('progresstrackermobile');
+    // configure the manager
+    manager.configure(config);
+    // manager.authorize('github')
+    // .then(response => console.log(response))
   }
 
   navigate = ( url ) => {
@@ -49,7 +52,6 @@ class LogIn extends React.Component{
     // fetch('https://github.com/login/oauth/authorize?', config.githubAuthId)
     // .then(response => {
       Linking.openURL("https://github.com/login/oauth/authorize?client_id=3a58418b7ea099800860")
-      .then(response => console.log(response))
     // })
   }
 

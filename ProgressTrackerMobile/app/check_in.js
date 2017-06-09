@@ -85,13 +85,7 @@ class CheckIn extends React.Component {
   // 3) Not already checked in
   checkInUser() {
     const dayRange =  this.state.dayRange;
-<<<<<<< HEAD
     if (this.validLocation && this.state.dayRange !== null) {
-=======
-    const requestData = { checkin: {[dayRange]: new Date(Date.now())} };
-    if (this.validLocation && this.state.dayRange !== null
-      && this.state.checkIns[dayRange] === null) {
->>>>>>> 8296f13c94557d751540b86de30a0f7489af71eb
       fetch('https://progresstrackerapi.herokuapp.com/api/checkins/today', {
         method: 'PATCH',
         headers: {
