@@ -29,9 +29,18 @@ class Profile extends React.Component {
       .then(responseJson => (this.setState({strikes: responseJson})))
       .catch(error => (console.log(error)))
   }
+
+  logout(){
+    //send delete to session
+  }
   render() {
     if (!this.state.user || !this.state.strikes) {
       return <ActivityIndicator color={'#C00A0A'} size={'large'}/>
+    }
+    const logoutButtonStyle ={
+      backgroundColor: 'blue',
+      position: 'absolute'
+
     }
     let header = <Text
     style={{
@@ -51,7 +60,19 @@ class Profile extends React.Component {
           style={{width: 150, height: 150}}
           source={{uri: this.state.user.picture_url}}
           />
-          <Text>Strikes</Text>
+        <Text style={{
+            backgroundColor: '#ffcccc',
+            textAlign: 'center',
+            color: '#C00A0A',
+            marginTop: 10,
+            marginBottom: 10,
+            padding: 5,
+
+        }}>Strikes</Text>
+        </View>
+        <View style={logoutButtonStyle}>
+          <Button title={"Logout"} onPress={this.logout} color={'white'}/>
+
         </View>
       </View>
     );
