@@ -3,6 +3,9 @@ import { Text, View, Image, TouchableOpacity, Linking } from 'react-native';
 import { SocialIcon } from 'react-native-elements';
 // import * as config from '../config/config';
 import OAuthManager from 'react-native-oauth';
+import { NavigationActions } from 'react-navigation';
+
+const manager = new OAuthManager('progresstrackermobile');
 
 // Create the manager
 
@@ -16,6 +19,29 @@ class LogIn extends React.Component{
 
 
   componentDidMount() {
+    manager.configure({
+      github: {
+        client_id: '3a58418b7ea099800860',
+        client_secret: '7d920a24dd7376688407b496224368813d26ad00'
+      }
+    });
+    manager.authorize('github')
+    manager.makeRequest('github', 'https://api.github.com/user', {
+    headers: {
+      "method": "get",
+      "Accept": "application/json"
+    }
+  })
+  .then(resp => console.log(resp.data))
+  const { navigate } = this.props.navigation;
+  console.log(this.props.navigation.state);
+  const resetAction = NavigationActions.reset({
+    index: 1,
+    actions: [
+      NavigationActions.navigate({ routeName: 'Navigate'})
+    ]
+  })
+  navigate('Navigate', {}, this.props.navigation.dispatch(resetAction));
   }
 
   componentWillUnmount(){
@@ -41,22 +67,22 @@ class LogIn extends React.Component{
     // .then(response => {
       // Linking.openURL("https://github.com/login/oauth/authorize?client_id=3a58418b7ea099800860")
     // })
-    const manager = new OAuthManager('progresstrackermobile');
-    manager.configure({
-      github: {
-        client_id: '3a58418b7ea099800860',
-        client_secret: '7d920a24dd7376688407b496224368813d26ad00'
-      }
-    });
+    // const manager = new OAuthManager('progresstrackermobile');
+    // manager.configure({
+    //   github: {
+    //     client_id: '3a58418b7ea099800860',
+    //     client_secret: '7d920a24dd7376688407b496224368813d26ad00'
+    //   }
+    // });
     // manager.authorize('github', {scopes: 'user'})
     // .then(
-      manager.makeRequest('github', 'https://api.github.com/user', {
-      headers: {
-        "method": "get",
-        "Accept": "application/json"
-      }
-    })
-    .then(resp => console.log(resp.data))
+    //   manager.makeRequest('github', 'https://api.github.com/user', {
+    //   headers: {
+    //     "method": "get",
+    //     "Accept": "application/json"
+    //   }
+    // })
+    // .then(resp => console.log(resp.data))
     // .then(manager.savedAccounts().then(response => console.log(response.accounts)))
   }
 

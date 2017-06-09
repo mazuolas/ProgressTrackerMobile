@@ -9,7 +9,10 @@ const StackRouter = StackNavigator({
     screen: LogIn
   },
   Navigate : {
-    screen: Router
+    screen: Router,
+    navigationOptions: ({navigation}) => ({
+      header: null
+    })
   }
 })
 

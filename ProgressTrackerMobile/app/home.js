@@ -34,6 +34,7 @@ class Home extends React.Component {
   // }
 
   render() {
+    console.log(this.props.navigation.state);
     return (
       <Text>Home Page</Text>
     );
