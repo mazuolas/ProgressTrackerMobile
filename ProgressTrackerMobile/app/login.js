@@ -5,10 +5,10 @@ import { SocialIcon } from 'react-native-elements';
 import OAuthManager from 'react-native-oauth';
 
 // Create the manager
-const manager = new OAuthManager('progresstrackermobile');
 
 
 class LogIn extends React.Component{
+
   static navigationOptions = {
     title: 'Progress Tracker Mobile'
   }
@@ -16,12 +16,6 @@ class LogIn extends React.Component{
 
 
   componentDidMount() {
-    manager.configure({
-      github: {
-        client_id: '3a58418b7ea099800860',
-        client_secret: '7d920a24dd7376688407b496224368813d26ad00'
-      }
-    });
   }
 
   componentWillUnmount(){
@@ -47,9 +41,23 @@ class LogIn extends React.Component{
     // .then(response => {
       // Linking.openURL("https://github.com/login/oauth/authorize?client_id=3a58418b7ea099800860")
     // })
-    manager.authorize('github')
-    .then( res => console.log(res))
-    .then(manager.deauthorize('github'))
+    const manager = new OAuthManager('progresstrackermobile');
+    manager.configure({
+      github: {
+        client_id: '3a58418b7ea099800860',
+        client_secret: '7d920a24dd7376688407b496224368813d26ad00'
+      }
+    });
+    // manager.authorize('github', {scopes: 'user'})
+    // .then(
+      manager.makeRequest('github', 'https://api.github.com/user', {
+      headers: {
+        "method": "get",
+        "Accept": "application/json"
+      }
+    })
+    .then(resp => console.log(resp.data))
+    // .then(manager.savedAccounts().then(response => console.log(response.accounts)))
   }
 
   render(){
