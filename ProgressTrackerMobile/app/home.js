@@ -12,27 +12,6 @@ class Home extends React.Component {
     ),
   };
 
-  // componentDidMount() {
-  //   Linking.addEventListener('url', this.handleOpenURL);
-  // }
-  //
-  // componentWillUnmount(){
-  //   Linking.removeEventListener('url', this.handleOpenURL);
-  // }
-  //
-  // handleOpenURL = ( event ) => {
-  //   this.navigate(event.url);
-  // }
-  //
-  // navigate = ( url ) => {
-  //   const { navigate } = this.props.navigation;
-  //   const route = url.replace(/.*?:\/\//g, '');
-  //
-  //   if (route === 'home') {
-  //     navigate('Home')
-  //   };
-  // }
-
   render() {
     console.log(this.props.navigation.state);
     return (
