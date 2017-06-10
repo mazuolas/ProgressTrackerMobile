@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Text, View, Button, ListView, TouchableHighlight} from 'react-native';
 import { Icon } from 'react-native-elements';
 import  BarGraph  from './bargraph';
+import PageTitle from './page_title';
+
 
 class Stats extends React.Component {
   static navigationOptions = {
@@ -76,19 +78,10 @@ class Stats extends React.Component {
     if (!this.state.assessments || !this.state.list) {
       return null
     }
-    let header = <Text
-    style={{
-      padding: 30,
-      backgroundColor: '#C00A0A',
-      color: 'white',
-      fontSize: 20,
-      fontWeight: 'bold'
-    }}
-    >Assessments</Text>
 
     return (
       <View>
-        {header}
+        <PageTitle title='Assessments' />
         <ListView
           removeClippedSubviews={false}
           dataSource={this.state.list}

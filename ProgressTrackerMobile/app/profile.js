@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Text, View, Button, ActivityIndicator, Image } from 'react-native';
-import { Icon } from 'react-native-elements';
+import { Text, View, Button, ActivityIndicator, Image, Linking } from 'react-native';
+import { Icon, SocialIcon } from 'react-native-elements';
+import PageTitle from './page_title';
+import * as style from './styles/profile.js';
 
 class Profile extends React.Component {
   static navigationOptions = {
@@ -35,44 +37,28 @@ class Profile extends React.Component {
   }
   render() {
     if (!this.state.user || !this.state.strikes) {
-      return <ActivityIndicator color={'#C00A0A'} size={'large'}/>
-    }
-    const logoutButtonStyle ={
-      backgroundColor: 'blue',
-      position: 'absolute'
+      return <PageTitle title="Profile" />
 
     }
-    let header = <Text
-    style={{
-      padding: 30,
-      backgroundColor: '#C00A0A',
-      color: 'white',
-      fontSize: 20,
-      fontWeight: 'bold',
-      textAlign: 'center'
-    }}
-    >{this.state.user.fname} {this.state.user.lname}</Text>
+
     return (
       <View>
-        {header}
+        <PageTitle title={`${this.state.user.fname} ${this.state.user.lname}`} />
         <View>
-          <Image
-          style={{width: 150, height: 150}}
-          source={{uri: this.state.user.picture_url}}
-          />
-        <Text style={{
-            backgroundColor: '#ffcccc',
-            textAlign: 'center',
-            color: '#C00A0A',
-            marginTop: 10,
-            marginBottom: 10,
-            padding: 5,
+          <View style={style.topProfile}>
+            <Image
+              style={{width: 150, height: 150}}
+              source={{uri: this.state.user.picture_url}}
+              />
+            <SocialIcon type='linkedin' onPress={() => Linking.openURL(this.state.user.linkedin_url)} />
+            <SocialIcon type='github-alt' onPress={() => Linking.openURL(this.state.user.github_url)} />
+          </View>
 
-        }}>Strikes</Text>
+        <Text style={style.strikes}>Strikes</Text>
         </View>
-        <View style={logoutButtonStyle}>
-          <Button title={"Logout"} onPress={this.logout} color={'white'}/>
 
+        <View style={style.logoutButtonStyle}>
+          <Button title={"Logout"} onPress={this.logout} color={'white'}/>
         </View>
       </View>
     );
