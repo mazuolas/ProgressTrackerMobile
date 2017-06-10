@@ -89,6 +89,26 @@ strike1 = Strike.create({
   user_id: user1.id,
   day_id: Day.today(1).id
   })
+strike2 = Strike.create({
+  note: 'late lunch checkin',
+  user_id: user1.id,
+  day_id: Day.first.id
+  })
+strike3 = Strike.create({
+  note: 'late morning checkin',
+  user_id: user1.id,
+  day_id: Day.second.id
+  })
+strike4 = Strike.create({
+  note: 'late morning checkin',
+  user_id: user1.id,
+  day_id: Day.third.id
+  })
+strike5 = Strike.create({
+  note: 'late morning checkin',
+  user_id: user1.id,
+  day_id: Day..id
+  })
 
 pair1 = Pair.create({
   user_id: user1.id,
