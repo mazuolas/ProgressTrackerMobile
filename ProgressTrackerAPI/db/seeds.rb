@@ -16,6 +16,29 @@ user1 = User.create({
   pronouns: 'he/him/his',
   cohort_id: 1
   })
+
+user3 = User.create({
+  fname: 'Chris',
+  lname: 'Gillespie',
+  picture_url: "https://s3-us-west-2.amazonaws.com/aa-progress-tracker/students/avatars/000/001/984/medium/Chris_Gillespie_1.jpg?1490919981",
+  email: 'christopher.d.gillespie@gmail.com',
+  github_url: 'http://github.com/gillespiecd',
+  linkedin_url: 'https://www.linkedin.com/in/christophergillespie/',
+  pronouns: 'he/him/his',
+  cohort_id: 1
+  })
+
+user5 = User.create({
+  fname: 'Christine',
+  lname: 'Garibian',
+  picture_url: "http://s3-us-west-2.amazonaws.com/aa-progress-tracker/students/avatars/000/001/981/medium/Christine_Garibian_1.jpg?1490920020",
+  email: 'christinegaribian@gmail.com',
+  github_url: 'http://github.com/christinegaribian',
+  linkedin_url: '',
+  pronouns: 'she/her/hers',
+  cohort_id: 1
+  })
+
 user2 = User.create({
   fname: 'Matthew',
   lname: 'Moon',
@@ -26,6 +49,19 @@ user2 = User.create({
   pronouns: 'he/him/his',
   cohort_id: 1
   })
+
+
+user4 = User.create({
+  fname: 'Tony',
+  lname: 'Wang',
+  picture_url: "http://s3-us-west-2.amazonaws.com/aa-progress-tracker/students/avatars/000/002/028/medium/Tony_Wang_1.jpg?1491003243",
+  email: 'sspy45@gmail.com',
+  github_url: 'http://github.com/sspy45',
+  linkedin_url: '',
+  pronouns: 'he/him/his',
+  cohort_id: 1
+  })
+
 
   week = 11
   day = 0
@@ -64,14 +100,14 @@ strike3 = Strike.create({
   day_id: Day.second.id
   })
 strike4 = Strike.create({
-  note: 'late morning checkin',
+  note: 'late afternoon checkin',
   user_id: user1.id,
   day_id: Day.third.id
   })
 strike5 = Strike.create({
-  note: 'late morning checkin',
+  note: 'missing report',
   user_id: user1.id,
-  day_id: Day..id
+  day_id: Day.third.id
   })
 
 pair1 = Pair.create({
@@ -118,14 +154,6 @@ score3 = AssessmentScore.create({
 
   stats3 = AssessmentStat.create({
     name: 'A03',
-    cohort_id: 1,
-    max_score: 30,
-    avg_score: 27.7,
-    median_score: 30,
-    passing_score: 24
-    })
-  stats4 = AssessmentStat.create({
-    name: 'A04',
     cohort_id: 1,
     max_score: 30,
     avg_score: 27.7,
