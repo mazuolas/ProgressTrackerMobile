@@ -33,8 +33,6 @@
 		8A77E3010D1E425F92AEF474 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 82A39D24BA4C4B908B1F49DC /* EvilIcons.ttf */; };
 		AC42CB6C1480868410BF4987 /* Pods_ProgressTrackerMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E4DBBCC1E036C4559EF21B /* Pods_ProgressTrackerMobile.framework */; };
 		ACC68248720D434DB562B54A /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C477CA50F3304E81B4EEC700 /* Octicons.ttf */; };
-		AF01A2921EE7331C007BAB28 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF01A2911EE7331C007BAB28 /* GoogleService-Info.plist */; };
-		AF01A2931EE7331C007BAB28 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF01A2911EE7331C007BAB28 /* GoogleService-Info.plist */; };
 		AF25EFDF1EEA6C44005F1DE9 /* libOAuthManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF25EFA71EEA6AB4005F1DE9 /* libOAuthManager.a */; };
 		B031AE4DAFDB47909A66DF27 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACDF00A48CBC469EB3C586B3 /* MaterialIcons.ttf */; };
 		BF65DD8C501E40DC966F1BB0 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADF7520610FC418EA61F5488 /* Entypo.ttf */; };
@@ -281,7 +279,7 @@
 		A5C8E6855148597F1F836FCB /* Pods-ProgressTrackerMobile-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProgressTrackerMobile-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProgressTrackerMobile-tvOSTests/Pods-ProgressTrackerMobile-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		ACDF00A48CBC469EB3C586B3 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		ADF7520610FC418EA61F5488 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
-		AF01A2911EE7331C007BAB28 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
+
 		AF25EFFA1EEA6C58005F1DE9 /* ProgressTrackerMobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ProgressTrackerMobile.entitlements; path = ProgressTrackerMobile/ProgressTrackerMobile.entitlements; sourceTree = "<group>"; };
 		B3D5D2E3F8334E13814C9D42 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		C477CA50F3304E81B4EEC700 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
@@ -410,7 +408,6 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				AF01A2911EE7331C007BAB28 /* GoogleService-Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
@@ -897,7 +894,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF01A2931EE7331C007BAB28 /* GoogleService-Info.plist in Resources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -905,7 +902,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF01A2921EE7331C007BAB28 /* GoogleService-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				BF65DD8C501E40DC966F1BB0 /* Entypo.ttf in Resources */,

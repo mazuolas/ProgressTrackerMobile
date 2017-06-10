@@ -1,12 +1,10 @@
-export const githubAuthId = ({
-  redirect: "follow",
-  method: "get",
-  mode: "no-cors",
-  headers: {
-    client_id: "3a58418b7ea099800860",
+import OAuthManager from 'react-native-oauth';
 
-    "Content-Type": "application/x-www-form-urlencoded"
+export const manager = new OAuthManager('progresstrackermobile');
+
+export const auth = ({
+  github: {
+    client_id: "3a58418b7ea099800860",
+    client_secret: "7d920a24dd7376688407b496224368813d26ad00"
   }
 })
-
-    // redirect_uri: "progresstrackermobile://home",
