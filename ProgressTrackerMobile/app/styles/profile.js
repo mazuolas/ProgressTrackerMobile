@@ -1,6 +1,5 @@
 export const logoutButtonStyle ={
   backgroundColor: 'blue',
-  position: 'absolute'
 }
 
 export const strikes = {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Button, ActivityIndicator, Image, Linking } from 'react-native';
+import { Text, View, Button, ActivityIndicator, Image, Linking, ListView } from 'react-native';
 import { Icon, SocialIcon } from 'react-native-elements';
 import PageTitle from './page_title';
 import * as style from './styles/profile.js';
@@ -29,16 +29,43 @@ class Profile extends React.Component {
     fetch(`https://progresstrackerapi.herokuapp.com/api/strikes`)
       .then(response => (response.json()))
       .then(responseJson => (this.setState({strikes: responseJson})))
+      .then(this.buildList.bind(this))
       .catch(error => (console.log(error)))
   }
 
   logout(){
     //send delete to session
   }
-  render() {
-    if (!this.state.user || !this.state.strikes) {
-      return <PageTitle title="Profile" />
+  renderFooter(){
+    return (
+      <View style={style.logoutButtonStyle}>
+        <Button title={"Logout"} onPress={this.logout} color={'white'}/>
+      </View>
+    )
+  }
 
+  buildList(){
+    let strikesArray = Object.keys(this.state.strikes).map((key)=>this.state.strikes[key]);
+    let dataSource = new ListView.DataSource({rowHasChanged:(r1,r2)=>r1 !== r2});
+    const list = dataSource.cloneWithRows(strikesArray);
+    this.setState({list: list});
+  }
+
+  renderRow(strike){
+    if (!strike.note) {
+      strike = {day: 'Total', note: strike}
+    }
+    return(
+      <View>
+        <Text>{strike.day}</Text>
+        <Text>{strike.note}</Text>
+      </View>
+    )
+  }
+
+  render() {
+    if (!this.state.user || !this.state.list) {
+      return <PageTitle title="Profile" />
     }
 
     return (
@@ -56,10 +83,13 @@ class Profile extends React.Component {
 
         <Text style={style.strikes}>Strikes</Text>
         </View>
-
-        <View style={style.logoutButtonStyle}>
-          <Button title={"Logout"} onPress={this.logout} color={'white'}/>
-        </View>
+        <ListView
+          removeClippedSubviews={false}
+          dataSource={this.state.list}
+          renderRow={this.renderRow.bind(this)}
+          enableEmptySections={true}
+          renderFooter={this.renderFooter.bind(this)}
+          />
       </View>
     );
   }
