@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Dimensions, ActivityIndicator } from 'react-native';
 import AnimatedBar from './animated_bar.js';
+import * as style from './styles/bargraph.js';
 
 class BarGraph extends React.Component {
 
@@ -18,17 +19,10 @@ class BarGraph extends React.Component {
   }
 
   render(){
-    const pageStyle = {
-      justifyContent: 'space-between',
-      height: 170,
-      backgroundColor: 'white',
-      paddingTop: 20,
-      paddingBottom: 20
-    }
 
     if (!this.state.score) {
       return(
-      <View style={pageStyle}>
+      <View style={style.pageStyle}>
         <ActivityIndicator color={'#C00A0A'} size={'large'}/>
       </View>)
     }
@@ -38,33 +32,6 @@ class BarGraph extends React.Component {
     let median_score = this.state.median_score/max;
     let passing_score = this.state.passing_score/max;
 
-    const textStyle = {
-      width: 100,
-      backgroundColor: '#C00A0A',
-      color: 'white',
-      fontSize: 15,
-      fontWeight: 'bold',
-      textAlign: 'center',
-      lineHeight: 40,
-      marginLeft: 10,
-      marginRight: 10
-    }
-    const numberStyle = {
-      color: 'white',
-      left: 130,
-      top: 20,
-      backgroundColor: 'transparent',
-      zIndex: 9000,
-      position: 'absolute'
-    }
-    const barStyle = {
-      left: 20,
-
-    }
-    const viewStyle = {
-      flexDirection: 'row',
-      justifyContent: 'flex-start'
-    }
     const passingBarStyle = {
       position: 'absolute',
       height: 140,
@@ -84,22 +51,22 @@ class BarGraph extends React.Component {
     }
 
     return (
-      <View style={pageStyle}>
+      <View style={style.pageStyle}>
         <Text style={passingTextStyle}>Passing</Text>
         <View style={passingBarStyle}></View>
-        <View style={viewStyle}>
-          <Text style={textStyle}>Your Score</Text>
-          <Text style={numberStyle}>{this.state.score}/{max}</Text>
-          <AnimatedBar style={barStyle} value={score} />
+        <View style={style.viewStyle}>
+          <Text style={style.textStyle}>Your Score</Text>
+          <Text style={style.numberStyle}>{this.state.score}/{max}</Text>
+          <AnimatedBar style={style.barStyle} value={score} />
         </View>
-        <View style={viewStyle}>
-          <Text style={textStyle}>Average</Text>
-          <Text style={numberStyle}>{this.state.avg_score}/{max}</Text>
+        <View style={style.viewStyle}>
+          <Text style={style.textStyle}>Average</Text>
+          <Text style={style.numberStyle}>{this.state.avg_score}/{max}</Text>
           <AnimatedBar value={avg_score} />
         </View>
-        <View style={viewStyle}>
-          <Text style={textStyle}>Median</Text>
-          <Text style={numberStyle}>{this.state.median_score}/{max}</Text>
+        <View style={style.viewStyle}>
+          <Text style={style.textStyle}>Median</Text>
+          <Text style={style.numberStyle}>{this.state.median_score}/{max}</Text>
           <AnimatedBar value={median_score} />
         </View>
       </View>
