@@ -18,6 +18,7 @@ export const strikes = {
     marginTop: 10,
     marginBottom: 10,
     padding: 5,
+    fontWeight: 'bold',
     fontSize: 20
 }
 
@@ -39,10 +40,12 @@ export const day = {
   color: '#C00A0A',
   flex: 1,
   marginRight: 5,
-  textAlign: 'center'
+  textAlign: 'center',
+  fontWeight: 'bold'
 }
 
 export const note = {
+  fontWeight: 'bold',
   backgroundColor: '#ffcccc',
   fontSize: 18,
   color: '#C00A0A',
