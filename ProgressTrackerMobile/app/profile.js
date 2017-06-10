@@ -36,13 +36,6 @@ class Profile extends React.Component {
   logout(){
     //send delete to session
   }
-  renderFooter(){
-    return (
-      <View style={style.logoutButtonStyle}>
-        <Button title={"Logout"} onPress={this.logout} color={'white'}/>
-      </View>
-    )
-  }
 
   buildList(){
     let strikesArray = Object.keys(this.state.strikes).map((key)=>this.state.strikes[key]);
@@ -56,9 +49,9 @@ class Profile extends React.Component {
       strike = {day: 'Total', note: strike}
     }
     return(
-      <View>
-        <Text>{strike.day}</Text>
-        <Text>{strike.note}</Text>
+      <View style={style.strikeRow}>
+        <Text style={style.day}>{strike.day}</Text>
+        <Text style={style.note}>{strike.note}</Text>
       </View>
     )
   }
@@ -88,8 +81,11 @@ class Profile extends React.Component {
           dataSource={this.state.list}
           renderRow={this.renderRow.bind(this)}
           enableEmptySections={true}
-          renderFooter={this.renderFooter.bind(this)}
+          style={style.strikeList}
           />
+          <View style={style.logoutButtonStyle}>
+            <Button title={"Logout"} onPress={this.logout} color={'white'}/>
+          </View>
       </View>
     );
   }

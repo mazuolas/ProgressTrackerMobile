@@ -1,5 +1,14 @@
+import { Dimensions } from 'react-native';
+
+const dim = Dimensions.get('window')
+
 export const logoutButtonStyle ={
   backgroundColor: 'blue',
+  position: 'absolute',
+  width: dim.width,
+  top: dim.height - 90,
+  justifyContent: 'center',
+
 }
 
 export const strikes = {
@@ -9,8 +18,38 @@ export const strikes = {
     marginTop: 10,
     marginBottom: 10,
     padding: 5,
+    fontSize: 20
 }
 
 export const topProfile = {
-  flexDirection: 'row'
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginTop: 5
+}
+
+export const strikeRow = {
+  flexDirection: 'row',
+  margin: 1
+}
+
+export const day = {
+  backgroundColor: '#ffcccc',
+  fontSize: 18,
+  color: '#C00A0A',
+  flex: 1,
+  marginRight: 5,
+  textAlign: 'center'
+}
+
+export const note = {
+  backgroundColor: '#ffcccc',
+  fontSize: 18,
+  color: '#C00A0A',
+  flex: 4,
+  textAlign: 'center'
+}
+
+export const strikeList = {
+  height: '40%'
 }
