@@ -1,0 +1,2 @@
+module Api::StrikesHelper
+end
