@@ -4,14 +4,9 @@ class Api::SessionController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user
       session[:session_token] = @user.reset_session_token!
-      render{
-        status: 200
-      }
+      render 'api/users/show'
     else
-      render{
-        json: "No user",
-        status: 404
-      }
+      render json: ["Invalid login credentials"], status: 422
     end
   end
 
