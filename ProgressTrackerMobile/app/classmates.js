@@ -30,11 +30,12 @@ class Classmates extends React.Component {
       .then(classmates => this.setState({ classmates: classmates}));
   }
 
-  render() {
-    const classmate = this.state.classmates.map((classmate, idx) => {
+
+  renderClassMates(classmates) {
+    return classmates.map((classmate, idx) => {
       return (
-        <Card key={idx} image={{uri:classmate.picture_url}}
-          containerStyle={{height: '50%', width: '60%', marginLeft: '20%'}}
+        <Card key={idx} image={{uri:classmate.picture_url} }
+          wrapperStyle={{height:300}}
           title={`${classmate.fname} ${classmate.lname}\n${classmate.pronouns}`} >
           <View style={{flexDirection: 'row', justifyContent: 'center'}}>
             <SocialIcon type='linkedin' onPress={() => Linking.openURL(classmate.linkedin_url)} />
@@ -43,13 +44,16 @@ class Classmates extends React.Component {
           </View>
         </Card>)
     })
+  }
 
+
+  render() {
     if (this.state.classmates.length >= 1) {
       return (
         <View>
           <PageTitle title="Classmates" />
-          <ScrollView contentContainerstyle={{flexGrow:1}}>
-            {classmate}
+          <ScrollView contentContainerStyle={{paddingBottom: 100}}>
+            {this.renderClassMates(this.state.classmates)}
           </ScrollView>
         </View>
       );
