@@ -62,9 +62,13 @@ class CheckIn extends React.Component {
     const time = new Date(Date.now());
     const hour = time.getHours();
     const minutes = time.getMinutes();
+    const day = time.getDay();
     let dayRange;
+    // skip weekends
+    if (day === 0 || day === 6) {
+      dayRange = null;
     // 8:00 - 9:00am
-    if (hour === 8 || (hour === 9 && minutes === 0)) {
+    } else if (hour === 8 || (hour === 9 && minutes === 0)) {
       dayRange = 'morning';
     // 1:15 - 1:30pm
     } else if (hour === 13 && (minutes >= 15 && minutes <= 30)) {
