@@ -16,6 +16,7 @@ class Home extends React.Component {
 
   constructor(props) {
     super(props);
+    this.token = this.props.navigation.state.params.session;
     this.state = { pair: {} };
   }
 
@@ -24,7 +25,7 @@ class Home extends React.Component {
   }
 
   fetchPair() {
-    fetch(`https://progresstrackerapi.herokuapp.com/api/pair/today?session_token=${this.props.navigation.state.params.session}`)
+    fetch(`https://progresstrackerapi.herokuapp.com/api/pair/today?session_token=${this.token}`)
       .then((response) => response.json())
       .then((pair) => this.setState({pair: pair}))
   }
