@@ -13,8 +13,12 @@ class LogIn extends React.Component{
   }
 
   componentDidMount() {
-    manager.deauthorize('github')
-    .then( () => manager.configure(config.auth));
+    if (Boolean(manager.savedAccounts().accounts)) {
+      manager.deauthorize('github')
+      .then( () => manager.configure(config.auth));
+    } else {
+      manager.configure(config.auth);
+    }
   }
 
   componentWillUnmount(){
