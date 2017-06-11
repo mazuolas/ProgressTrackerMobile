@@ -13,6 +13,7 @@
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* ProgressTrackerMobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ProgressTrackerMobileTests.m */; };
+		12ED169D1EEE041600ED4B15 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 12ED169C1EEE041600ED4B15 /* Settings.bundle */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -251,6 +252,7 @@
 		00E356F21AD99517003FC87E /* ProgressTrackerMobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgressTrackerMobileTests.m; sourceTree = "<group>"; };
 		0205C508D58A498E82260E38 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		048612DAF94FB9435E3A9CDE /* Pods-ProgressTrackerMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProgressTrackerMobileTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProgressTrackerMobileTests/Pods-ProgressTrackerMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
+		12ED169C1EEE041600ED4B15 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = ../../../Settings.bundle; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* ProgressTrackerMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProgressTrackerMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -279,7 +281,6 @@
 		A5C8E6855148597F1F836FCB /* Pods-ProgressTrackerMobile-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProgressTrackerMobile-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProgressTrackerMobile-tvOSTests/Pods-ProgressTrackerMobile-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		ACDF00A48CBC469EB3C586B3 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		ADF7520610FC418EA61F5488 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
-
 		AF25EFFA1EEA6C58005F1DE9 /* ProgressTrackerMobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ProgressTrackerMobile.entitlements; path = ProgressTrackerMobile/ProgressTrackerMobile.entitlements; sourceTree = "<group>"; };
 		B3D5D2E3F8334E13814C9D42 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		C477CA50F3304E81B4EEC700 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
@@ -402,6 +403,7 @@
 		13B07FAE1A68108700A75B9A /* ProgressTrackerMobile */ = {
 			isa = PBXGroup;
 			children = (
+				12ED169C1EEE041600ED4B15 /* Settings.bundle */,
 				AF25EFFA1EEA6C58005F1DE9 /* ProgressTrackerMobile.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -612,10 +614,11 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = P3465HGWTC;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = 48LKWT4RZE;
+						DevelopmentTeam = P3465HGWTC;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -894,7 +897,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -904,6 +906,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				12ED169D1EEE041600ED4B15 /* Settings.bundle in Resources */,
 				BF65DD8C501E40DC966F1BB0 /* Entypo.ttf in Resources */,
 				8A77E3010D1E425F92AEF474 /* EvilIcons.ttf in Resources */,
 				39FEE8FF4D564A5396C0055A /* FontAwesome.ttf in Resources */,
@@ -1072,6 +1075,7 @@
 			baseConfigurationReference = 048612DAF94FB9435E3A9CDE /* Pods-ProgressTrackerMobileTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = P3465HGWTC;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1103,6 +1107,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = P3465HGWTC;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
@@ -1132,7 +1137,7 @@
 				CODE_SIGN_ENTITLEMENTS = ProgressTrackerMobile/ProgressTrackerMobile.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = 48LKWT4RZE;
+				DEVELOPMENT_TEAM = P3465HGWTC;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
@@ -1159,7 +1164,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ProgressTrackerMobile/ProgressTrackerMobile.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 48LKWT4RZE;
+				DEVELOPMENT_TEAM = P3465HGWTC;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
