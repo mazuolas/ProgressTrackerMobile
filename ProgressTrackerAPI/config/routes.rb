@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     get '/strikes', to: 'strikes#index'
     get '/assessment_scores', to: 'assessment_scores#index'
     get '/assessment_score/:name', to: 'assessment_scores#show'
+    post '/session', to: 'session#create'
+    delete '/session/delete', to: 'session#destroy'
   end
 end

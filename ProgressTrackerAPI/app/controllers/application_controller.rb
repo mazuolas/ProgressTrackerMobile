@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def current_user
-    #placeholder until oAuth is implemented
-    User.find_by(id: 1)
+    return nil if sessionn[:session_token].nil?
+    @current_user ||= User.find_by(session_token: session[:session_token])
   end
 
   protected
@@ -13,5 +13,5 @@ class ApplicationController < ActionController::Base
   def json_request?
     request.format.json?
   end
-  
+
 end
