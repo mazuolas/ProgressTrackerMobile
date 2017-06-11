@@ -30,10 +30,10 @@ class LogIn extends React.Component{
       fetch(`https://progresstrackerapi.herokuapp.com/api/session?username=${response.data.login}`, {
         method: "POST",
       })
+      .then( res => res.json())
       .then( (resp) => {
-        console.log(resp);
-        if (resp.status === 200 ) {
-          navigate("Navigate")
+        if (Boolean(resp.session_token) ) {
+          navigate("Navigate", {session: resp.session_token})
         }
       })
     })

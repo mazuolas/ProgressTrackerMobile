@@ -25,7 +25,7 @@ class Classmates extends React.Component {
   }
 
   fetchClassmates() {
-    fetch('https://progresstrackerapi.herokuapp.com/api/classmates')
+    fetch(`https://progresstrackerapi.herokuapp.com/api/classmates?session_token=${this.props.navigation.state.params.session}`)
       .then((response) => response.json())
       .then(classmates => this.setState({ classmates: classmates}));
   }
