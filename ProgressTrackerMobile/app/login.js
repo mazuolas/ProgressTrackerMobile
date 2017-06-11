@@ -21,16 +21,23 @@ class LogIn extends React.Component{
     }
   }
 
-  componentWillUnmount(){
-    console.log("close");
-  }
 
   _onPress() {
     const { navigate } = this.props.navigation;
     manager.authorize('github')
     .then(() => manager.makeRequest('github', 'https://api.github.com/user'))
-    .then( resp => console.log(resp))
-    .then(() => navigate('Navigate'))
+    .then( (response) => {
+      fetch(`https://progresstrackerapi.herokuapp.com/api/session?username=${response.data.login}`, {
+        method: "POST",
+      })
+      .then( (resp) => {
+        console.log(resp);
+        if (resp.status === 200 ) {
+          navigate("Navigate")
+        }
+      })
+    })
+    // .then(() => navigate('Navigate'))
   }
 
   render(){
