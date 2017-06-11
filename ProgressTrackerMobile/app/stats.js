@@ -17,6 +17,7 @@ class Stats extends React.Component {
 
   constructor(props){
     super(props);
+    this.token = this.props.navigation.state.params.session;
     this.state = {
       details: null,
       dataSource: null,
@@ -24,7 +25,7 @@ class Stats extends React.Component {
       list: null
     };
 
-    fetch(`https://progresstrackerapi.herokuapp.com/api/assessment_scores?session_token=${this.props.navigation.state.params.session}`)
+    fetch(`https://progresstrackerapi.herokuapp.com/api/assessment_scores?session_token=${this.token}`)
       .then((response) => response.json())
       .then((responseJson) => {
         resopnseJson = responseJson || {};
@@ -50,7 +51,7 @@ class Stats extends React.Component {
     let graph = null;
     let title = assessment.assessment_name + ' Your Score: ' + assessment.score
     if (this.state.details === assessment.assessment_name) {
-      graph = <BarGraph details={assessment.assessment_name} session={this.props.navigation.state.params.session}/>
+      graph = <BarGraph details={assessment.assessment_name} session={this.token}/>
       title = `${assessment.assessment_name} Details`
     }
     return(

@@ -37,7 +37,6 @@ class LogIn extends React.Component{
         }
       })
     })
-    // .then(() => navigate('Navigate'))
   }
 
   render(){

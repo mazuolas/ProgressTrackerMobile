@@ -5,8 +5,11 @@ import { Router } from './app/router';
 import LogIn from './app/login';
 
 const StackRouter = StackNavigator({
-  Home: {
-    screen: LogIn
+  Log: {
+    screen: LogIn,
+    navigationOptions: ({navigation}) => ({
+      header: null
+    })
   },
   Navigate : {
     screen: Router,
