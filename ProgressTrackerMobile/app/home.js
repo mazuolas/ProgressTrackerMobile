@@ -23,24 +23,20 @@ class Home extends React.Component {
   }
 
   fetchPair() {
-    fetch('https://progresstrackerapi.herokuapp.com/api/pair/today')
+    fetch(`https://progresstrackerapi.herokuapp.com/api/pair/today?session_token=${this.props.navigation.state.params.session}`)
       .then((response) => response.json())
       .then((pair) => this.setState({pair: pair}))
   }
 
   render() {
     const { pair } = this.state;
-
     if (pair.partner !== undefined) {
-      debugger;
       return (
-        <View>
+        <View style={{flex:1}}>
           <PageTitle title={pair.day} />
-          <View style={{flexDirection: 'column', flex: 1, alignItems: 'center',
+          <View style={{flex:1, flexDirection: 'column', alignItems: 'center',
             justifyContent: 'center'}}>
-            <Text>
-              {`Workstation: ${pair.workstation}`}
-            </Text>
+            <Text>{`Workstation: ${pair.workstation}`}</Text>
             <Text>
               {`Partner: ${pair.partner.fname} ${pair.partner.lname}`}
             </Text>
