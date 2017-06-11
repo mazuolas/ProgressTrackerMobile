@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, Platform, Linking } from 'react-native';
 import { Icon } from 'react-native-elements';
 import PageTitle from './page_title';
 
