@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, Button } from 'react-native';
 import { Icon } from 'react-native-elements';
+import PageTitle from './page_title';
 
 class Home extends React.Component {
   static navigationOptions = {
@@ -14,46 +15,36 @@ class Home extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      pair: {},
-      pairs: []
-    };
-    this.fetchPairs = this.fetchPairs.bind(this);
+    this.state = { pair: {} };
   }
 
   componentDidMount() {
-    this.fetchPairData();
+    this.fetchPair();
   }
 
-  fetchPairData() {
+  fetchPair() {
     fetch('https://progresstrackerapi.herokuapp.com/api/pair/today')
       .then((response) => response.json())
       .then((pair) => this.setState({pair: pair}))
-      .then(this.fetchPairs);
-  }
-
-  fetchPairs() {
-    fetch('https://progresstrackerapi.herokuapp.com/api/pairs')
-      .then((response) => response.json())
-      .then((pairs) => this.setState({pairs: pairs}));
   }
 
   render() {
-    const { pair, pairs } = this.state;
+    const { pair } = this.state;
 
-    if (Object.keys(pairs).length >= 1) {
+    if (pair.partner !== undefined) {
+      debugger;
       return (
-        <View style={{flexDirection: 'column', flex: 1, alignItems: 'center',
-          justifyContent: 'center'}}>
-          <Text>
-            {`Day: ${pair.day}`}
-          </Text>
-          <Text>
-            {`Workstation: ${pair.workstation}`}
-          </Text>
-          <Text>
-            {`Partner: ${pair.partner.fname} ${pair.partner.lname}`}
-          </Text>
+        <View>
+          <PageTitle title={pair.day} />
+          <View style={{flexDirection: 'column', flex: 1, alignItems: 'center',
+            justifyContent: 'center'}}>
+            <Text>
+              {`Workstation: ${pair.workstation}`}
+            </Text>
+            <Text>
+              {`Partner: ${pair.partner.fname} ${pair.partner.lname}`}
+            </Text>
+          </View>
         </View>
       );
     } else {
