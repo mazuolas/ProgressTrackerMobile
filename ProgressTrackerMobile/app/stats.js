@@ -24,9 +24,12 @@ class Stats extends React.Component {
       list: null
     };
 
-    fetch(`https://progresstrackerapi.herokuapp.com/api/assessment_scores`)
+    fetch(`https://progresstrackerapi.herokuapp.com/api/assessment_scores?session_token=${this.props.navigation.state.params.session}`)
       .then((response) => response.json())
-      .then((responseJson) => (this.setState({assessments: responseJson})))
+      .then((responseJson) => {
+        resopnseJson = responseJson || {};
+        this.setState({assessments: responseJson})
+        })
       .then(this.buildList.bind(this))
       .catch((error) => {
         console.error(error);
@@ -35,7 +38,7 @@ class Stats extends React.Component {
 
   buildList(){
     let assessmentsArray = Object.keys(this.state.assessments).map((key)=>this.state.assessments[key]).reverse();
-    if (!this.state.details) {
+    if (!this.state.details && assessmentsArray[0]) {
       this.setState({details: assessmentsArray[0].assessment_name});
     }
     let dataSource = new ListView.DataSource({rowHasChanged:(r1,r2)=>r1 !== r2});
@@ -47,7 +50,7 @@ class Stats extends React.Component {
     let graph = null;
     let title = assessment.assessment_name + ' Your Score: ' + assessment.score
     if (this.state.details === assessment.assessment_name) {
-      graph = <BarGraph details={assessment.assessment_name}/>
+      graph = <BarGraph details={assessment.assessment_name} session={this.props.navigation.state.params.session}/>
       title = `${assessment.assessment_name} Details`
     }
     return(

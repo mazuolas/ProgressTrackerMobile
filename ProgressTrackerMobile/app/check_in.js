@@ -52,7 +52,7 @@ class CheckIn extends React.Component {
   }
 
   fetchCheckins() {
-    fetch('https://progresstrackerapi.herokuapp.com/api/checkins/today')
+    fetch(`https://progresstrackerapi.herokuapp.com/api/checkins/today?session_token=${this.props.navigation.state.params.session}`)
       .then((response) => response.json())
       .then((checkins) => this.setState({ checkIns: checkins }))
       .then(this.fetchPosition);
@@ -92,7 +92,7 @@ class CheckIn extends React.Component {
     const requestData = { checkin: {[dayRange]: new Date(Date.now())} };
     if (this.validLocation && this.state.dayRange !== null
       && this.state.checkIns[dayRange] === null) {
-      fetch('https://progresstrackerapi.herokuapp.com/api/checkins/today', {
+      fetch(`https://progresstrackerapi.herokuapp.com/api/checkins/today?session_token=${this.props.navigation.session}`, {
         method: 'PATCH',
         headers: {
           'Accept': 'application/json',

@@ -13,7 +13,7 @@ class BarGraph extends React.Component {
     }
   }
   componentWillMount(){
-    fetch(`https://progresstrackerapi.herokuapp.com/api/assessment_score/${this.props.details}`)
+    fetch(`https://progresstrackerapi.herokuapp.com/api/assessment_score/${this.props.details}?session_token=${this.props.session}`)
     .then((response) => response.json())
     .then((stats) => this.setState(stats))
   }
