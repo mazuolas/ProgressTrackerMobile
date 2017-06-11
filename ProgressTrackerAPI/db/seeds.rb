@@ -24,7 +24,8 @@ user2 = User.create({
   github_url: 'http://github.com/Agkura',
   linkedin_url: '',
   pronouns: 'he/him/his',
-  cohort_id: 1
+  cohort_id: 1,
+  username: 'Agkura'
   })
 
   week = 11
