@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, Platform, Linking } from 'react-native';
 import { Icon } from 'react-native-elements';
 
 class Home extends React.Component {
@@ -13,6 +13,7 @@ class Home extends React.Component {
   };
 
   render() {
+    console.log(this.props.navigation.state);
     return (
       <Text>Home Page</Text>
     );
