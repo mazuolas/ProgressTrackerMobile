@@ -21,12 +21,12 @@ class Profile extends React.Component {
       user: null,
       strikes: null
     }
-    fetch(`https://progresstrackerapi.herokuapp.com/api/user/me`)
+    fetch(`https://progresstrackerapi.herokuapp.com/api/user/me?session_token=${this.props.navigation.state.params.session}`)
       .then(response => (response.json()))
       .then(responseJson => (this.setState({user: responseJson})))
       .catch(error => (console.log(error)))
 
-    fetch(`https://progresstrackerapi.herokuapp.com/api/strikes`)
+    fetch(`https://progresstrackerapi.herokuapp.com/api/strikes?session_token=${this.props.navigation.state.params.session}`)
       .then(response => (response.json()))
       .then(responseJson => (this.setState({strikes: responseJson})))
       .then(this.buildList.bind(this))

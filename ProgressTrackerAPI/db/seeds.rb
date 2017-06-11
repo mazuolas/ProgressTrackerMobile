@@ -14,7 +14,8 @@ user1 = User.create({
   github_url: 'https://github.com/mazuolas',
   linkedin_url: 'https://www.linkedin.com/in/mark-azuolas-6b8b0a13b/',
   pronouns: 'he/him/his',
-  cohort_id: 1
+  cohort_id: 1,
+  username: "mazuolas"
   })
 
 user3 = User.create({
@@ -25,7 +26,8 @@ user3 = User.create({
   github_url: 'http://github.com/gillespiecd',
   linkedin_url: 'https://www.linkedin.com/in/christophergillespie/',
   pronouns: 'he/him/his',
-  cohort_id: 1
+  cohort_id: 1,
+  username: "gillespiecd"
   })
 
 user5 = User.create({
