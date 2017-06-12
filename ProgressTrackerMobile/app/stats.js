@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Text, View, Button, ListView, TouchableHighlight} from 'react-native';
 import { Icon } from 'react-native-elements';
 import  BarGraph  from './bargraph';
+import PageTitle from './page_title';
+
 
 class Stats extends React.Component {
   static navigationOptions = {
@@ -15,6 +17,7 @@ class Stats extends React.Component {
 
   constructor(props){
     super(props);
+    this.token = this.props.navigation.state.params.session;
     this.state = {
       details: null,
       dataSource: null,
@@ -22,9 +25,12 @@ class Stats extends React.Component {
       list: null
     };
 
-    fetch(`https://progresstrackerapi.herokuapp.com/api/assessment_scores`)
+    fetch(`https://progresstrackerapi.herokuapp.com/api/assessment_scores?session_token=${this.token}`)
       .then((response) => response.json())
-      .then((responseJson) => (this.setState({assessments: responseJson})))
+      .then((responseJson) => {
+        resopnseJson = responseJson || {};
+        this.setState({assessments: responseJson})
+        })
       .then(this.buildList.bind(this))
       .catch((error) => {
         console.error(error);
@@ -33,7 +39,7 @@ class Stats extends React.Component {
 
   buildList(){
     let assessmentsArray = Object.keys(this.state.assessments).map((key)=>this.state.assessments[key]).reverse();
-    if (!this.state.details) {
+    if (!this.state.details && assessmentsArray[0]) {
       this.setState({details: assessmentsArray[0].assessment_name});
     }
     let dataSource = new ListView.DataSource({rowHasChanged:(r1,r2)=>r1 !== r2});
@@ -45,7 +51,7 @@ class Stats extends React.Component {
     let graph = null;
     let title = assessment.assessment_name + ' Your Score: ' + assessment.score
     if (this.state.details === assessment.assessment_name) {
-      graph = <BarGraph details={assessment.assessment_name}/>
+      graph = <BarGraph details={assessment.assessment_name} session={this.token}/>
       title = `${assessment.assessment_name} Details`
     }
     return(
@@ -76,19 +82,10 @@ class Stats extends React.Component {
     if (!this.state.assessments || !this.state.list) {
       return null
     }
-    let header = <Text
-    style={{
-      padding: 30,
-      backgroundColor: '#C00A0A',
-      color: 'white',
-      fontSize: 20,
-      fontWeight: 'bold'
-    }}
-    >Assessments</Text>
 
     return (
       <View>
-        {header}
+        <PageTitle title='Assessments' />
         <ListView
           removeClippedSubviews={false}
           dataSource={this.state.list}

@@ -14,7 +14,8 @@ user1 = User.create({
   github_url: 'https://github.com/mazuolas',
   linkedin_url: 'https://www.linkedin.com/in/mark-azuolas-6b8b0a13b/',
   pronouns: 'he/him/his',
-  cohort_id: 1
+  cohort_id: 1,
+  username: "mazuolas"
   })
 
 user3 = User.create({
@@ -25,7 +26,8 @@ user3 = User.create({
   github_url: 'http://github.com/gillespiecd',
   linkedin_url: 'https://www.linkedin.com/in/christophergillespie/',
   pronouns: 'he/him/his',
-  cohort_id: 1
+  cohort_id: 1,
+  username: "gillespiecd"
   })
 
 user5 = User.create({
@@ -47,7 +49,8 @@ user2 = User.create({
   github_url: 'http://github.com/Agkura',
   linkedin_url: '',
   pronouns: 'he/him/his',
-  cohort_id: 1
+  cohort_id: 1,
+  username: 'Agkura'
   })
 
 
@@ -89,6 +92,26 @@ strike1 = Strike.create({
   user_id: user1.id,
   day_id: Day.today(1).id
   })
+strike2 = Strike.create({
+  note: 'late lunch checkin',
+  user_id: user1.id,
+  day_id: Day.first.id
+  })
+strike3 = Strike.create({
+  note: 'late morning checkin',
+  user_id: user1.id,
+  day_id: Day.second.id
+  })
+strike4 = Strike.create({
+  note: 'late afternoon checkin',
+  user_id: user1.id,
+  day_id: Day.third.id
+  })
+strike5 = Strike.create({
+  note: 'missing report',
+  user_id: user1.id,
+  day_id: Day.third.id
+  })
 
 pair1 = Pair.create({
   user_id: user1.id,
@@ -129,7 +152,7 @@ score3 = AssessmentScore.create({
     max_score: 49,
     avg_score: 44.4,
     median_score: 47,
-    passing_score: 44
+    passing_score: 40
     })
 
   stats3 = AssessmentStat.create({
