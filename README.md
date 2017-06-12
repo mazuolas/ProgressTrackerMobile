@@ -4,7 +4,9 @@ Progress Tracker Mobile is a mobile version of App Academy's [Progress Tracker](
 common use cases -- checking in, viewing pair assignments, browsing classmates --
 as easy and fluid as possible.
 
-![walkthrough](docs/walkthrough.gif)
+[Demo Page](https://mazuolas.github.io/ProgressTrackerMobile/index.html)
+
+![walkthrough](docs/home.gif)
 
 ## Technologies
 
@@ -17,25 +19,27 @@ as easy and fluid as possible.
 
 ### Easy and automatic check-ins
 
-Uses geolocation and time windows to automatically validate attendance
+Uses geolocation and time windows to automatically validate student attendance.
 
 ![checkins]()
 
 ### Daily pair assignments
 
-![pair](docs/pair.png)
+Displays current day, pair assignment, and workstation.
+
+![pair](docs/home.png)
 
 ### Classmates Directory
 
 For those times when you forget someone's name or want to check their latest Github commits.
 
-![directory](docs/directory.gif)
+![directory](docs/classmates.gif)
 
 ### Assessment Statistics
 
-View test scores compared to the class average
+Visually examine test scores compared to passing score, median, and average.
 
-![scores](docs/scores.gif)
+![scores](docs/stats.gif)
 
 ### Github OAuth
 

@@ -64,7 +64,7 @@ class LogIn extends React.Component{
             }}/>
             <SocialIcon
               type="github"
-              button
+              button={true}
               style={{backgroundColor: '#ff3850',
                 marginBottom: 50,
                 justifyContent: 'center',
