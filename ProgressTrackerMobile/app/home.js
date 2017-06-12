@@ -38,7 +38,8 @@ class Home extends React.Component {
           <PageTitle title={pair.day} />
           <View style={{flex:1, flexDirection: 'column', alignItems: 'center',
             justifyContent: 'center'}}>
-            <Text>{`Workstation: ${pair.workstation}`}</Text>
+            <Text style={{fontSize: 30, marginBottom: 10}}>Today's Pairing</Text>
+            <Text style={{fontSize: 20}}>{`Workstation: ${pair.workstation}`}</Text>
             <Classmate classmate={pair.partner} />
           </View>
         </View>
