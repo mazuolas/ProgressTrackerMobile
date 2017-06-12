@@ -1,5 +1,8 @@
 import React from 'react';
-import { Text, View, Image, TouchableOpacity, Linking } from 'react-native';
+import { Text,
+         View,
+         Image,
+         Linking } from 'react-native';
 import { SocialIcon } from 'react-native-elements';
 import * as config from '../config/config';
 import { NavigationActions } from 'react-navigation';
@@ -12,6 +15,13 @@ class LogIn extends React.Component{
     title: 'Progress Tracker Mobile'
   }
 
+  constructor(props){
+    super(props);
+    this.state = {
+      loading: false
+    }
+  }
+
   componentDidMount() {
     if (Boolean(manager.savedAccounts().accounts)) {
       manager.deauthorize('github')
@@ -22,7 +32,8 @@ class LogIn extends React.Component{
   }
 
 
-  _onPress() {
+  onPress() {
+    this.setState({loading: true})
     const { navigate } = this.props.navigation;
     manager.authorize('github')
     .then(() => manager.makeRequest('github', 'https://api.github.com/user'))
@@ -32,6 +43,7 @@ class LogIn extends React.Component{
       })
       .then( res => res.json())
       .then( (resp) => {
+        this.setState({loading:false})
         if (Boolean(resp.session_token) ) {
           navigate("Navigate", {session: resp.session_token})
         }
@@ -42,26 +54,28 @@ class LogIn extends React.Component{
   render(){
     const { navigate } = this.props.navigation;
     return(
-      <View style={{flex: 1, justifyContent: 'space-between'}}>
+      <View style={{flex: 1, justifyContent: 'space-between', backgroundColor: 'white' }}>
           <View></View>
           <Image source={require("../assets/aa.jpg")}
-                 style={{
-                   width: 200,
-                   height: 200,
-                   alignSelf: 'center'
-                 }}/>
-         <SocialIcon
-               type="github"
-               button={true}
-               style={{backgroundColor: '#ff3850',
-                       marginBottom: 50,
-                       justifyContent: 'center',
-                       borderRadius: 0}}
-               loading={false}
-               onPress={this._onPress.bind(this)}
-               title="Sign-In with Github"
-               color="white" />
-      </View>
+            style={{
+              width: 200,
+              height: 200,
+              alignSelf: 'center'
+            }}/>
+            <SocialIcon
+              type="github"
+              button
+              style={{backgroundColor: '#ff3850',
+                marginBottom: 50,
+                justifyContent: 'center',
+                borderRadius: 0}}
+              loading={this.state.loading}
+              onPress={this.onPress.bind(this)}
+              title="Sign-In with Github"
+              color="white"
+              disabled={this.state.loading}
+                />
+            </View>
     )
 
   }
