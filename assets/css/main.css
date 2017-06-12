@@ -3768,3 +3768,9 @@
 .fa-github, .fa-linkedin {
 	margin-left: 5px;
 }
+
+.emulator {
+	display: flex;
+	margin-top: 20px;
+  justify-content: center;
+}
