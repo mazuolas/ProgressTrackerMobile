@@ -15,8 +15,7 @@ export const strikes = {
     backgroundColor: '#ffcccc',
     textAlign: 'center',
     color: '#C00A0A',
-    marginTop: 10,
-    marginBottom: 10,
+    margin: 10,
     padding: 5,
     fontWeight: 'bold',
     fontSize: 20
@@ -30,8 +29,7 @@ export const topProfile = {
 }
 
 export const strikeRow = {
-  flexDirection: 'row',
-  margin: 1
+  flexDirection: 'row'
 }
 
 export const day = {
@@ -40,6 +38,7 @@ export const day = {
   color: '#C00A0A',
   flex: 1,
   marginRight: 5,
+  marginLeft: 10,
   textAlign: 'center',
   fontWeight: 'bold'
 }
@@ -49,6 +48,7 @@ export const note = {
   backgroundColor: '#ffcccc',
   fontSize: 18,
   color: '#C00A0A',
+  marginRight: 10,
   flex: 4,
   textAlign: 'center'
 }

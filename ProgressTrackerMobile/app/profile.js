@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View, Button, ActivityIndicator, Image, Linking, ListView } from 'react-native';
-import { Icon, SocialIcon } from 'react-native-elements';
+import { Text, View, ActivityIndicator, Image, Linking, ListView } from 'react-native';
+import { Button, Icon, SocialIcon } from 'react-native-elements';
 import PageTitle from './page_title';
 import * as style from './styles/profile.js';
 
@@ -88,9 +88,16 @@ class Profile extends React.Component {
           enableEmptySections={true}
           style={style.strikeList}
           />
-          <View style={style.logoutButtonStyle}>
-            <Button title={"Logout"} onPress={this.logout.bind(this)} color={'white'}/>
-          </View>
+        <Button
+          title={"Logout"}
+          iconRight
+          icon={{name: 'input'}}
+          onPress={this.logout.bind(this)}
+          backgroundColor={'red'}
+          color={'white'}
+          fontSize={20}
+          fontWeight={'bold'}
+        />
       </View>
     );
   }
