@@ -27,6 +27,7 @@ class LogIn extends React.Component{
       manager.deauthorize('github')
       .then( () => manager.configure(config.auth));
     } else {
+      manager.deauthorize('github')
       manager.configure(config.auth);
     }
   }
