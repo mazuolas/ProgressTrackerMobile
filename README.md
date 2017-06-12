@@ -1,51 +1,52 @@
 # Progress Tracker Mobile
 
-Progress Tracker Mobile is a mobile version of App Academy's [Progress Tracker](http://progress.appacademy.io/), with a focus on making the most
-common use cases -- checking in, viewing pair assignments, browsing classmates --
-as easy and fluid as possible.
+Progress Tracker Mobile is the mobile extraction of [App Academy](appacademy.io)'s Progress Tracker.  Progress Tracker Mobile brings ease-of-use, functionality and intuitive navigation into the hands of students at aA.
 
 [Demo Page](https://mazuolas.github.io/ProgressTrackerMobile/index.html)
 
-![walkthrough](docs/home.gif)
+![walkthrough](docs/general.gif)
 
-## Technologies
+## Implementation
 
 * React Native
-* Rails API
-* Heroku deployment
-* Github OAuth
+  - `react-native-oauth`
+  - `react-native-elements`
+  - `react-navigation`
+* Ruby on Rails
+* Github OAuth 2.0
 
 ## Features
 
-### Easy and automatic check-ins
+#### *Easy and automatic check-ins*
 
-Uses geolocation and time windows to automatically validate student attendance.
+Simple check-in to make staying on track intuitive and effortless.
 
-![checkins]()
+#### *Daily pair assignments*
 
-### Daily pair assignments
+Displays current day, pair assignment, and workstation on authentication for quick access.
 
-Displays current day, pair assignment, and workstation.
+![pair](docs/partner.png)
 
-![pair](docs/home.png)
+#### *Classmates Directory*
 
-### Classmates Directory
+Learn about your classmates and watch them grow professionally with direct access to github repo and LinkedIn.
 
-For those times when you forget someone's name or want to check their latest Github commits.
+![directory](docs/classmates.png)
 
-![directory](docs/classmates.gif)
+#### *Assessment Statistics*
 
-### Assessment Statistics
+Visual representation of current and past assessment scores with added metrics for clarity.
 
-Visually examine test scores compared to passing score, median, and average.
+![scores](docs/stats_page.gif)
 
-![scores](docs/stats.gif)
+#### *Github OAuth 2.0*
 
-### Github OAuth
+Utilizes `react-native-oauth` with a `rails` API for authentication.
 
-Utilizes Github credentials for seamless login, logout, and sessions
+![oauth](docs/login.gif)
 
-![oauth](docs/oauth.gif)
-
-## Future Features
-* Daily reports and quizzes
+## Roadmap
+- [ ] Daily reports and quizzes
+- [ ] Todo list for students
+- [ ] Upcoming checkin availability
+- [ ] Contact submission

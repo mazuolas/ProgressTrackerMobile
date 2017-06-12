@@ -9,7 +9,7 @@ class Profile extends React.Component {
     tabBarLabel: 'Profile',
     tabBarIcon: ({ focused }) => (
       <Icon
-        color= { focused ? 'royalblue' : 'white' }
+        color= { focused ? '#C00A0A' : 'white' }
         name='perm-identity'
       />
     ),
@@ -72,7 +72,7 @@ class Profile extends React.Component {
         <View>
           <View style={style.topProfile}>
             <Image
-              style={{width: 150, height: 150}}
+              style={{width: 150, height: 150, borderRadius: 30}}
               source={{uri: this.state.user.picture_url}}
               />
             <SocialIcon type='linkedin' onPress={() => Linking.openURL(this.state.user.linkedin_url)} />

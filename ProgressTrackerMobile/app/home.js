@@ -9,7 +9,7 @@ class Home extends React.Component {
     tabBarLabel: 'Home',
     tabBarIcon: ({ focused }) => (
       <Icon
-        color= { focused ? 'royalblue' : 'white' }
+        color= { focused ? '#C00A0A' : 'white' }
         name='home'/>
     ),
   };
@@ -37,11 +37,20 @@ class Home extends React.Component {
         <View style={{flex:1, backgroundColor: 'white', justifyContent: 'center'}}>
           <PageTitle title={pair.day} />
           <View style={{flex: 1, margin: 20}}>
-            <Text style={{fontSize: 30, marginBottom: 20, alignSelf: 'center'}}>{"Partner:"}</Text>
+            <Text style={{fontSize: 30, marginBottom: 20, alignSelf: 'center'}}>{"Partner"}</Text>
             <View style={{flex: 1}}>
               <Classmate classmate={pair.partner}/>
             </View>
-            <Text style={{fontSize: 20, alignSelf: 'center'}}>{`Workstation: ${pair.workstation}`}</Text>
+            <Text style={{padding: 10,
+                         width: '100%',
+                         color: 'white',
+                         textAlign: 'center',
+                         fontSize: 20,
+                         fontWeight: 'bold',
+                         alignSelf: 'center',
+                         backgroundColor: '#C00A0A'}}>
+                         {`Workstation: ${pair.workstation}`}
+           </Text>
           </View>
         </View>
       );

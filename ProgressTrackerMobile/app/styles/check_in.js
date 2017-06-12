@@ -1,11 +1,8 @@
 export const styleCheckedIn = {
   backgroundColor: 'rgba(152,251,152,.6)',
-  alignItems: 'center',
-  justifyContent: 'center',
-  flexDirection: 'row',
-  borderWidth: 0.5,
-  height: 185,
-  borderColor: 'black'
+  flexDirection: 'column',
+  flex: 1,
+  margin: 10
 };
 
 export const styleText = {
@@ -21,11 +18,30 @@ export const styleTextTitle = {
 };
 
 export const styleToCheckIn = {
-  backgroundColor: 'rgba(211,211,211,.5)',
+  backgroundColor: 'rgba(211,211,211,0.2)',
+  flexDirection: 'column',
+  flex: 1,
+  margin: 10
+};
+
+
+export const timeBlock = {
+  flex: 1,
+  backgroundColor: 'white',
+  padding: 10
+}
+
+export const availability = {
+  flex: 5,
   alignItems: 'center',
   justifyContent: 'center',
-  flexDirection: 'row',
-  height: 185,
-  borderWidth: 0.5,
-  borderColor: 'black'
-};
+  borderTopColor: 'red'
+}
+
+export const timeHeader = {
+  fontSize: 25
+}
+
+export const timeBody = {
+
+}

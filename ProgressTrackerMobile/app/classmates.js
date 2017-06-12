@@ -9,7 +9,7 @@ class Classmates extends React.Component {
     tabBarLabel: 'Classmates',
     tabBarIcon: ({ focused }) => (
       <Icon
-        color= { focused ? 'royalblue' : 'white' }
+        color= { focused ? '#C00A0A' : 'white' }
         name='people'
       />
     ),
