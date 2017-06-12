@@ -2275,9 +2275,13 @@
 
 			.box .image.featured img {
 				border-radius: 0;
-				display: block;
+				object-fit: cover;
 				width: 100%;
-				max-height: 100%;
+				height: 400px;
+			}
+
+			.gifplayer-ready img, .gp-gif-element img, .gifplayer-wrapper {
+				height: 800px;
 			}
 
 			.box .image.featured:first-child {
