@@ -67,7 +67,7 @@ class Profile extends React.Component {
     }
 
     return (
-      <View>
+      <View style={{backgroundColor: 'white', flex: 1}}>
         <PageTitle title={`${this.state.user.fname} ${this.state.user.lname}`} />
         <View>
           <View style={style.topProfile}>
@@ -93,10 +93,11 @@ class Profile extends React.Component {
           iconRight
           icon={{name: 'input'}}
           onPress={this.logout.bind(this)}
-          backgroundColor={'red'}
+          backgroundColor={'rgba(192,10,10,0.9)'}
           color={'white'}
           fontSize={20}
           fontWeight={'bold'}
+          buttonStyle={{marginBottom: 20}}
         />
       </View>
     );

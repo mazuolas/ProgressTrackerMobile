@@ -44,7 +44,7 @@ class Classmates extends React.Component {
   render() {
     if (this.state.classmates.length >= 1) {
       return (
-        <View>
+        <View style={{backgroundColor: 'white'}}>
           <PageTitle title="Classmates" />
           <ScrollView contentContainerStyle={{paddingBottom: 100}}>
             {this.renderClassMates(this.state.classmates)}

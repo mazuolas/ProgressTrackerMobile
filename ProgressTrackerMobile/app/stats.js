@@ -84,7 +84,7 @@ class Stats extends React.Component {
     }
 
     return (
-      <View>
+      <View style={{backgroundColor: 'white', flex: 1}}>
         <PageTitle title='Assessments' />
         <ListView
           removeClippedSubviews={false}

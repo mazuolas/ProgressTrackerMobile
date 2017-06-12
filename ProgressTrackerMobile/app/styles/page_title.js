@@ -3,12 +3,18 @@ export const styleTitle = {
   alignItems: 'center',
   justifyContent: 'center',
   flexDirection: 'row',
-  height: 70
+  height: 90
 };
 
 export const styleText = {
-  fontSize: 35,
+  marginTop: 40,
+  marginBottom: 10,
+  fontSize: 30,
   color: 'white',
-  marginTop: 20,
-  marginBottom: 10
+  height: 50
 };
+
+export const styleStatus = {
+  height: 20,
+  backgroundColor: 'white'
+}

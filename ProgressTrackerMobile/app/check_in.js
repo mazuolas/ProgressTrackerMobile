@@ -143,7 +143,7 @@ class CheckIn extends React.Component {
 
     if (this.state.checkIns !== {}) {
       return (
-        <View>
+        <View style={{backgroundColor: 'white'}}>
             <PageTitle title={title} />
             <View>
               {this.showTime(morning, 'Morning', '8:00 - 9:00am')}

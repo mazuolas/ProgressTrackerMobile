@@ -34,13 +34,14 @@ class Home extends React.Component {
     const { pair } = this.state;
     if (pair.partner !== undefined) {
       return (
-        <View style={{flex:1}}>
+        <View style={{flex:1, backgroundColor: 'white', justifyContent: 'center'}}>
           <PageTitle title={pair.day} />
-          <View style={{flex:1, flexDirection: 'column', alignItems: 'center',
-            justifyContent: 'center'}}>
-            <Text style={{fontSize: 30, marginBottom: 10}}>{"Today's Pairing"}</Text>
-            <Text style={{fontSize: 20}}>{`Workstation: ${pair.workstation}`}</Text>
-            <Classmate classmate={pair.partner} />
+          <View style={{flex: 1, margin: 20}}>
+            <Text style={{fontSize: 30, marginBottom: 20, alignSelf: 'center'}}>{"Partner:"}</Text>
+            <View style={{flex: 1}}>
+              <Classmate classmate={pair.partner}/>
+            </View>
+            <Text style={{fontSize: 20, alignSelf: 'center'}}>{`Workstation: ${pair.workstation}`}</Text>
           </View>
         </View>
       );
