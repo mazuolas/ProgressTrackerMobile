@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Button, ListView, TouchableHighlight} from 'react-native';
+import { Text, View, Button, ListView} from 'react-native';
 import { Icon } from 'react-native-elements';
 import  BarGraph  from './bargraph';
 import PageTitle from './page_title';
