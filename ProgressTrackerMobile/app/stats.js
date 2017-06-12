@@ -38,7 +38,12 @@ class Stats extends React.Component {
   }
 
   buildList(){
+    console.log(this.state.assessments);
     let assessmentsArray = Object.keys(this.state.assessments).map((key)=>this.state.assessments[key]).reverse();
+    if (!assessmentsArray[0]) {
+      this.setState({list: 'empty'})
+      return
+    }
     if (!this.state.details && assessmentsArray[0]) {
       this.setState({details: assessmentsArray[0].assessment_name});
     }
@@ -49,13 +54,14 @@ class Stats extends React.Component {
 
   renderRow(assessment){
     let graph = null;
-    let title = assessment.assessment_name + ' Your Score: ' + assessment.score
+    let title = assessment.assessment_name + ' Your Score: ' + assessment.score + '/' + assessment.max_score
     if (this.state.details === assessment.assessment_name) {
       graph = <BarGraph details={assessment.assessment_name} session={this.token}/>
       title = `${assessment.assessment_name} Details`
     }
+    let backgroundColor = assessment.score > assessment.passing_score ? 'lightgreen' : '#ffcccc'
     return(
-      <View style={{backgroundColor: 'lightgreen', margin: 2}}>
+      <View style={{backgroundColor: backgroundColor, margin: 2}}>
         <Button
           color={'#C00A0A'}
           key={assessment.assessment_name}
@@ -82,7 +88,14 @@ class Stats extends React.Component {
     if (!this.state.assessments || !this.state.list) {
       return null
     }
-
+    if (this.state.list === 'empty'){
+      return (
+        <View>
+          <PageTitle title='Assessments' />
+          <Text>No Assessments Taken</Text>
+        </View>
+      )
+    }
     return (
       <View>
         <PageTitle title='Assessments' />

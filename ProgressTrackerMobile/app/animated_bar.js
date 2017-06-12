@@ -7,7 +7,7 @@ class AnimatedBar extends Component {
     this.dim = Dimensions.get('window');
     this._width = new Animated.Value(0);
     this.state = {
-      color: 'green',
+      color: props.color,
     };
   }
 

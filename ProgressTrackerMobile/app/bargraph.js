@@ -31,6 +31,7 @@ class BarGraph extends React.Component {
     let avg_score = this.state.avg_score/max;
     let median_score = this.state.median_score/max;
     let passing_score = this.state.passing_score/max;
+    let color = this.state.score < this.state.passing_score ? '#C00A0A' : 'green'
 
     const passingBarStyle = {
       position: 'absolute',
@@ -57,17 +58,17 @@ class BarGraph extends React.Component {
         <View style={style.viewStyle}>
           <Text style={style.textStyle}>Your Score</Text>
           <Text style={style.numberStyle}>{this.state.score}/{max}</Text>
-          <AnimatedBar style={style.barStyle} value={score} />
+          <AnimatedBar color={color} style={style.barStyle} value={score} />
         </View>
         <View style={style.viewStyle}>
           <Text style={style.textStyle}>Average</Text>
           <Text style={style.numberStyle}>{this.state.avg_score}/{max}</Text>
-          <AnimatedBar value={avg_score} />
+          <AnimatedBar color={'green'} value={avg_score} />
         </View>
         <View style={style.viewStyle}>
           <Text style={style.textStyle}>Median</Text>
           <Text style={style.numberStyle}>{this.state.median_score}/{max}</Text>
-          <AnimatedBar value={median_score} />
+          <AnimatedBar color={'green'} value={median_score} />
         </View>
       </View>
     )
