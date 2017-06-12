@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { styleText, styleTitle } from './styles/page_title';
+import { View, Text, StatusBar } from 'react-native';
+import { styleText, styleTitle, styleStatus } from './styles/page_title';
 
 class PageTitle extends React.Component {
 
@@ -11,6 +11,9 @@ class PageTitle extends React.Component {
   render() {
     return (
       <View style={styleTitle}>
+        <View style={styleStatus}>
+          <StatusBar barStyle='light-content'/>
+        </View>
         <Text style={styleText}>{this.props.title}</Text>
       </View>
     );
