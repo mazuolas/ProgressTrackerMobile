@@ -4,7 +4,7 @@ Progress Tracker Mobile is a mobile version of App Academy's [Progress Tracker](
 common use cases -- checking in, viewing pair assignments, browsing classmates --
 as easy and fluid as possible.
 
-[Demo Page](https://mazuolas.github.io/ProgressTrackerMobile/index.htmlÂ)
+[Demo Page](https://mazuolas.github.io/ProgressTrackerMobile/index.html)
 
 ![walkthrough](docs/walkthrough.gif)
 
