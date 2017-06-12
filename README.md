@@ -6,7 +6,7 @@ as easy and fluid as possible.
 
 [Demo Page](https://mazuolas.github.io/ProgressTrackerMobile/index.html)
 
-![walkthrough](docs/walkthrough.gif)
+![walkthrough](docs/home.gif)
 
 ## Technologies
 
@@ -27,19 +27,19 @@ Uses geolocation and time windows to automatically validate student attendance.
 
 Displays current day, pair assignment, and workstation.
 
-![pair](docs/pair.png)
+![pair](docs/home.png)
 
 ### Classmates Directory
 
 For those times when you forget someone's name or want to check their latest Github commits.
 
-![directory](docs/directory.gif)
+![directory](docs/classmates.gif)
 
 ### Assessment Statistics
 
 Visually examine test scores compared to passing score, median, and average.
 
-![scores](docs/scores.gif)
+![scores](docs/stats.gif)
 
 ### Github OAuth
 
