@@ -2280,8 +2280,8 @@
 				height: 400px;
 			}
 
-			.gifplayer-ready img, .gp-gif-element img, .gifplayer-wrapper {
-				height: 800px;
+			.gp-gif-element img {
+				height: 800px !important;
 			}
 
 			.box .image.featured:first-child {
