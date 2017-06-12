@@ -10,7 +10,7 @@ class Stats extends React.Component {
     tabBarLabel: 'Stats',
     tabBarIcon: ({ focused }) => (
       <Icon
-        color= { focused ? 'royalblue' : 'white' }
+        color= { focused ? '#C00A0A' : 'white' }
         name='insert-chart'/>
     ),
   };

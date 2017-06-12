@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { Icon, Button, Divider } from 'react-native-elements';
 import { styleCheckedIn, styleToCheckIn,
-        styleText, styleTextTitle} from './styles/check_in';
+        timeBlock, availability,
+        timeHeader, timeBody } from './styles/check_in';
 import { styleTitle } from './styles/page_title';
 import PageTitle from './page_title';
 
@@ -29,8 +30,9 @@ class CheckIn extends React.Component {
     tabBarLabel: 'Check In',
     tabBarIcon: ({ focused }) => (
       <Icon
-        color= { focused ? 'royalblue' : 'white' }
+        color= { focused ? '#C00A0A' : 'white' }
         name='check-circle'
+        size={40}
       />
     ),
   };
@@ -114,24 +116,28 @@ class CheckIn extends React.Component {
       t = new Date(time);
       return (
           <View style={styleCheckedIn}>
-            <View>
-              <Text style={styleTextTitle}>{`${range} `}</Text>
-              <Text style={styleText}>
+            <View style={timeBlock}>
+              <Text style={timeHeader}>{`${range} `}</Text>
+            </View>
+            <View style={availability}>
+              <Text style={timeBody}>
                 {`Checked-In: ${t.toLocaleTimeString(navigator.language,
                   {hour: '2-digit', minute:'2-digit'})}`}
-              </Text>
+                </Text>
             </View>
           </View>
       );
     } else {
       return (
         <View style={styleToCheckIn}>
-          <View>
-          <Text style={styleTextTitle}>{`${range} `}</Text>
-          <Text style={styleText}>
-            {`Available ${start}`}
-          </Text>
-        </View>
+          <View style={timeBlock}>
+            <Text style={timeHeader}>{`${range} `}</Text>
+          </View>
+          <View style={availability}>
+            <Text style={timeBody}>
+              {`Available ${start}`}
+            </Text>
+          </View>
         </View>
       );
     }
@@ -143,15 +149,15 @@ class CheckIn extends React.Component {
 
     if (this.state.checkIns !== {}) {
       return (
-        <View style={{backgroundColor: 'white'}}>
+        <View style={{flex: 1, backgroundColor: 'white'}}>
             <PageTitle title={title} />
-            <View>
+            <View style={{flex: 1}}>
               {this.showTime(morning, 'Morning', '8:00 - 9:00am')}
             </View>
-            <View>
+            <View style={{flex: 1}}>
               {this.showTime(lunch, 'Lunch', '1:15 - 1:30pm')}
             </View>
-            <View>
+            <View style={{flex: 1}}>
               {this.showTime(afternoon, 'Afternoon', '4:00 - 4:15pm')}
             </View>
         </View>

@@ -25,10 +25,20 @@ export const Router = TabNavigator({
   },
 }, {
   tabBarOptions: {
-    activeTintColor: '#e91e63',
+    activeBackgroundColor: 'white',
     showLabel: false,
+    tabStyle: {
+      borderWidth: 0,
+      borderColor: 'white',
+      shadowColor: 'white'
+    },
     style: {
-    backgroundColor: '#C00A0A',
+      backgroundColor: '#C00A0A',
+      height: 70,
+      borderWidth: 0,
+      borderColor: 'white',
+      shadowColor: 'white',
+      borderTopWidth: 0
     },
   },
 });
