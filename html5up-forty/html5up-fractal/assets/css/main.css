@@ -1671,8 +1671,8 @@
 		}
 
 	body, input, select, textarea {
-		font-family: Arial, Helvetica, sans-serif;
-		font-weight: normal;
+		font-family: 'Nunito', sans-serif;
+		font-weight: lighter;
 		line-height: 1.5em;
 		letter-spacing: -0.015em;
 	}
@@ -2016,7 +2016,6 @@
 		input[type="button"].special,
 		button.special,
 		.button.special {
-			box-shadow: none;
 			background-color: #4696e5;
 			color: #ffffff !important;
 		}
@@ -2375,6 +2374,7 @@
 			.image.phone .inner, .image.phone:before, .image.phone:after {
 				display: block;
 				border: solid 2px rgba(255, 255, 255, 0.25);
+				background-color: rgba(0, 0, 0, .8);
 			}
 
 			.image.phone .inner {
@@ -2695,6 +2695,7 @@
 
 	section.special, article.special {
 		text-align: center;
+		/*agkura logo*/
 	}
 
 	header p {
@@ -2771,14 +2772,14 @@
 
 		.spotlight .image {
 			width: 30%;
-			border-radius: 100%;
+			/*border-radius: 100%;*/
 			margin: 0 3em 0 0;
 			display: block;
 		}
 
 			.spotlight .image img {
 				display: block;
-				border-radius: 100%;
+				/*border-radius: 100%;*/
 				width: 100%;
 			}
 
@@ -3153,8 +3154,21 @@
 			}
 
 		.wrapper.style2 {
-			background-color: #fbfbfb;
+			display: flex;
 			color: #999999;
+		}
+
+		.emulator {
+			margin: 0 auto;
+		}
+
+		.container{
+			margin: 0 auto;
+		}
+
+		.wrapper.style2 p {
+			margin: 0 auto;
+			width: 60%;
 		}
 
 			.wrapper.style2 input[type="submit"],
@@ -3627,7 +3641,7 @@
 /* Header */
 
 	#header {
-		background-color: #4696e5;
+		background-color: #ff3850;
 		color: #d0e4f8;
 		padding: 4.5em 0 2.5em 0 ;
 		-moz-align-items: center;
@@ -3642,10 +3656,13 @@
 		-webkit-justify-content: center;
 		-ms-justify-content: center;
 		justify-content: center;
-		background-image: url("images/overlay.png"), url("images/pattern-size1.svg");
+		/*background-image: url("images/overlay.png"), url("images/pattern-size1.svg");
 		background-position: top left, center center;
 		background-attachment: fixed, fixed;
-		background-size: auto, cover;
+		background-size: auto, cover;*/
+		background-image: url('images/header_splash.jpg');
+		background-size: cover;
+		background-position: bottom;
 		height: 100vh;
 		min-height: 35em;
 	}
@@ -3681,9 +3698,9 @@
 			#header input[type="button"].special,
 			#header button.special,
 			#header .button.special {
-				box-shadow: none;
-				background-color: #ffffff;
-				color: #4696e5 !important;
+				box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.25);
+				/*background-color: #ffffff;*/
+				color: #ffffff !important;
 			}
 
 		#header label {
@@ -3841,14 +3858,17 @@
 		}
 
 		#header h1 {
-			font-size: 3.25em;
-			font-weight: bold;
+			font-size: 2.25em;
 			margin-bottom: 0.5em;
+			border-bottom: 1px solid rgba(255, 255, 255, .4);
+			padding-bottom: .8em;
 		}
 
 		#header p {
-			font-size: 1.5em;
+			font-size: 1em;
 			line-height: 1.35em;
+			padding: 10px;
+			color: white;
 		}
 
 			#header p br {
@@ -3865,8 +3885,11 @@
 			-ms-transform: translateX(0);
 			transform: translateX(0);
 			opacity: 1;
-			text-align: right;
+			text-align: center;
 			margin: -3.5em 4em 0 0;
+			/*background-color: rgba(0,0,0,.7);*/
+			border-radius: 5px;
+			padding: 30px;
 		}
 
 			#header .content > :last-child {
@@ -3894,7 +3917,7 @@
 				-webkit-transition-delay: 0.75s;
 				-ms-transition-delay: 0.75s;
 				transition-delay: 0.75s;
-				opacity: 1;
+				opacity: .8;
 			}
 
 		@media screen and (max-width: 1280px) {
@@ -4149,3 +4172,30 @@
 		}
 
 	}
+.creators .icon {
+	font-size: 200%;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.creators {
+	padding: 15px;
+	display: flex;
+	justify-content: space-around;
+}
+
+.username {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.username span {
+	font-weight: bold;
+	font-size: 120%;
+}
+
+.icons {
+	margin: 10px;
+	text-align: center;
+}
