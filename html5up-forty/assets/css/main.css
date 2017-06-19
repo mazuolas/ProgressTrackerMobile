@@ -1685,6 +1685,7 @@
 		a:hover {
 			border-bottom-color: transparent;
 			color: #9bf1ff !important;
+			opacity: 0;
 		}
 
 		a:active {
@@ -1826,14 +1827,11 @@
 	}
 
 	header.major {
-		width: -moz-max-content;
-		width: -webkit-max-content;
-		width: -ms-max-content;
-		width: max-content;
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;
 		display: flex;
+		width: 50%;
 		-moz-justify-content: center;
 		-webkit-justify-content: center;
 		-ms-justify-content: center;
@@ -1842,8 +1840,11 @@
 		-webkit-align-items: center;
 		-ms-align-items: center;
 		align-items: center;
-		border-bottom: 1px solid white;
-		margin-bottom: 1em;
+		-moz-transition: -moz-transform 0.25s ease, opacity 0.25s ease, -moz-filter 1s ease, -webkit-filter 1s ease;
+		-webkit-transition: -webkit-transform 0.25s ease, opacity 0.25s ease, -webkit-filter 1s ease, -webkit-filter 1s ease;
+		-ms-transition: -ms-transform 0.25s ease, opacity 0.25s ease, -ms-filter 1s ease, -webkit-filter 1s ease;
+		transition: transform 0.25s ease, opacity 0.25s ease, filter 1s ease, -webkit-filter 1s ease;
+		z-index: 5;
 	}
 
 		header.major > :first-child {
@@ -2785,7 +2786,7 @@
 			-webkit-transition: -webkit-transform 0.25s ease, opacity 0.25s ease, -webkit-filter 1s ease, -webkit-filter 1s ease;
 			-ms-transition: -ms-transform 0.25s ease, opacity 0.25s ease, -ms-filter 1s ease, -webkit-filter 1s ease;
 			transition: transform 0.25s ease, opacity 0.25s ease, filter 1s ease, -webkit-filter 1s ease;
-			padding: 1em 2em 1em 2em ;
+			/*padding: 1em 2em 1em 2em ;*/
 			background-position: center;
 			background-repeat: no-repeat;
 			background-size: cover;
@@ -2802,7 +2803,7 @@
 		}
 
 			.tiles article .image {
-				display: none;
+				position: relative;
 			}
 
 			.tiles article header {
@@ -2828,6 +2829,7 @@
 				z-index: 4;
 			}
 
+
 			.tiles article:before {
 				-moz-transition: opacity 0.5s ease;
 				-webkit-transition: opacity 0.5s ease;
@@ -2838,14 +2840,12 @@
 				display: block;
 				height: 100%;
 				left: 0;
-				opacity: 0.85;
 				position: absolute;
 				width: 100%;
 				z-index: 2;
 			}
 
 			.tiles article:after {
-				background-color: rgba(36, 41, 67, 0.25);
 				content: '';
 				display: block;
 				height: 100%;
@@ -2876,6 +2876,7 @@
 				width: 70%;
 			}
 
+
 			.tiles article:nth-child(6n - 5):before {
 				/*background-color: #6fc3df;*/
 			}
@@ -2889,11 +2890,11 @@
 			}
 
 			.tiles article:nth-child(6n - 2):before {
-				background-color: #e7b788;
+				/*background-color: #e7b788;*/
 			}
 
 			.tiles article:nth-child(6n - 1):before {
-				background-color: #8ea9e8;
+				/*background-color: #8ea9e8;*/
 			}
 
 			.tiles article:nth-child(6n):before {
