@@ -1,0 +1,3 @@
+[submodule "gifplayer"]
+	path = gifplayer
+	url = https://github.com/rubentd/gifplayer.git
