@@ -63,6 +63,7 @@ You can also log out on the profile page to force a token reset.
 ## Roadmap
 - [x] GitHub OAuth
 - [x] Geolocation based check-in
+- [ ] Job Seeker Variation
 - [ ] iOS release on App Store
 - [ ] Android release on Play Store
 - [ ] Daily reports and quizzes
