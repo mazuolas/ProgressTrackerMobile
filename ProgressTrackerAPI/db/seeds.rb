@@ -127,6 +127,30 @@ user10 = User.create({
   username: 'wilbooorn'
   })
 
+user11 = User.create({
+  fname: 'Guest',
+  lname: 'Account',
+  picture_url: "https://res.cloudinary.com/dcslgdwha/image/upload/v1496356412/hgamsfza5grrhi78itwl.jpg",
+  email: 'fakeguestemail@guest.com',
+  github_url: 'https://github.com/ProgressTrackerGuest',
+  linkedin_url: '',
+  pronouns: 'they/them/theirs',
+  cohort_id: 1,
+  username: 'ProgressTrackerGuest'
+  })
+
+user11 = User.create({
+  fname: 'Chithra',
+  lname: 'Venkatesan',
+  picture_url: "http://s3-us-west-2.amazonaws.com/aa-progress-tracker/students/avatars/000/001/939/medium/Chithra_Venkatesan.jpg?1488224215",
+  email: 'hellochitty',
+  github_url: 'https://github.com/ProgressTrackerGuest',
+  linkedin_url: 'https://www.linkedin.com/in/chithravenkatesan/',
+  pronouns: 'she/her/hers',
+  cohort_id: 1,
+  username: 'hellochitty'
+  })
+
 
 week = 11
 day = 0

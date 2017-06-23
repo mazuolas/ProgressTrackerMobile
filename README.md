@@ -59,6 +59,12 @@ componentDidMount() {
 ```
 You can also log out on the profile page to force a token reset.
 
+#### *Assessments*
+Assessment scores and cohort statistics are displayed using a bar graph that allows users to see a visual representation of their own performance and how they compare to their peers.
+
+Dynamic bars were implemented by creating animated view components which grow to a percentage of total screen width based on score divided by total possible score. The position of the passing line was calculated with similar calculations.  
+
+Each row of the assessments page is rendered as a button which when activated fetches and displays more details about the specific assessment. 
 
 ## Roadmap
 - [x] GitHub OAuth
