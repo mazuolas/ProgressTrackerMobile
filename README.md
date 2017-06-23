@@ -64,7 +64,66 @@ Assessment scores and cohort statistics are displayed using a bar graph that all
 
 Dynamic bars were implemented by creating animated view components which grow to a percentage of total screen width based on score divided by total possible score. The position of the passing line was calculated with similar calculations.  
 
-Each row of the assessments page is rendered as a button which when activated fetches and displays more details about the specific assessment. 
+Each row of the assessments page is rendered as a button which when activated fetches and displays more details about the specific assessment.
+
+#### *Check-In*
+Automatically submits check-in POST request after confirmation of location and time.
+
+##### *Location*
+Fetches geolocation coordinates from student's device
+
+```JavaScript
+fetchPosition() {
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      this.setState({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+        error: null,
+      }, this.getDayRange);
+    },
+    (error) => this.setState({ error: error.message }),
+    { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+  );
+}
+
+// App Academy location: 37.791258, -122.393777
+validLocation() {
+  return (this.state.latitude === 37.791258 &&
+    this.state.longitude === -122.393777)
+}
+```
+
+##### *Time*
+Validates check-in window is open (morning, lunch, afternoon)
+
+```JavaScript
+getDayRange() {
+  const time = new Date(Date.now());
+  const hour = time.getHours();
+  const minutes = time.getMinutes();
+  const day = time.getDay();
+  let dayRange;
+
+  // skip weekends
+  if (day === 0 || day === 6) {
+    dayRange = null;
+  // 8:00 - 9:00am
+  } else if (hour === 8 || (hour === 9 && minutes === 0)) {
+    dayRange = 'morning';
+  // 1:15 - 1:30pm
+  } else if (hour === 13 && (minutes >= 15 && minutes <= 30)) {
+    dayRange = 'lunch';
+  // 4:00 - 4:15pm
+  } else if (hour === 16 && minutes <= 15) {
+    dayRange = 'afternoon';
+  } else {
+    dayRange = null;
+  }
+
+  this.setState({dayRange},this.checkInUser);
+}
+```
 
 ## Roadmap
 - [x] GitHub OAuth
