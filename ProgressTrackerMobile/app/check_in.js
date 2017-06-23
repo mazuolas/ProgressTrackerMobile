@@ -66,6 +66,7 @@ class CheckIn extends React.Component {
     const minutes = time.getMinutes();
     const day = time.getDay();
     let dayRange;
+
     // skip weekends
     if (day === 0 || day === 6) {
       dayRange = null;
@@ -81,6 +82,7 @@ class CheckIn extends React.Component {
     } else {
       dayRange = null;
     }
+    
     this.setState({dayRange},this.checkInUser);
   }
 
