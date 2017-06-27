@@ -3,6 +3,8 @@ import { Text, View, ActivityIndicator, Image, Linking, ListView } from 'react-n
 import { Button, Icon, SocialIcon } from 'react-native-elements';
 import PageTitle from './page_title';
 import * as style from './styles/profile.js';
+// 'slack://channel?team=T03GU501J&id=C4P27V42D'
+console.disableYellowBox = true;
 
 class Profile extends React.Component {
   static navigationOptions = {
