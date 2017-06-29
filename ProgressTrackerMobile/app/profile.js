@@ -77,6 +77,10 @@ class Profile extends React.Component {
               style={{width: 150, height: 150, borderRadius: 30}}
               source={{uri: this.state.user.picture_url}}
               />
+              <Icon raised
+                name='slack'
+                type='font-awesome' 
+                onPress={() => Linking.openURL('slack://channel?team=T03GU501J&id=C4P27V42D')}/>
             <SocialIcon type='linkedin' onPress={() => Linking.openURL(this.state.user.linkedin_url)} />
             <SocialIcon type='github-alt' onPress={() => Linking.openURL(this.state.user.github_url)} />
           </View>
