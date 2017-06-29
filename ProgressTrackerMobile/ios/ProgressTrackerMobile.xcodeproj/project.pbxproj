@@ -34,6 +34,7 @@
 		AC42CB6C1480868410BF4987 /* Pods_ProgressTrackerMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E4DBBCC1E036C4559EF21B /* Pods_ProgressTrackerMobile.framework */; };
 		ACC68248720D434DB562B54A /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C477CA50F3304E81B4EEC700 /* Octicons.ttf */; };
 		AF25EFDF1EEA6C44005F1DE9 /* libOAuthManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF25EFA71EEA6AB4005F1DE9 /* libOAuthManager.a */; };
+		AF56A93D1F0573C0003F4F17 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF56A92A1F057379003F4F17 /* libRCTPushNotification.a */; };
 		B031AE4DAFDB47909A66DF27 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACDF00A48CBC469EB3C586B3 /* MaterialIcons.ttf */; };
 		BF65DD8C501E40DC966F1BB0 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADF7520610FC418EA61F5488 /* Entypo.ttf */; };
 		C0EA73F74C014259800C1DB0 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B4C24E39E4C493EB0B0119D /* MaterialCommunityIcons.ttf */; };
@@ -237,6 +238,20 @@
 			remoteGlobalIDString = D91353961DA7849100AABC96;
 			remoteInfo = OAuthManager;
 		};
+		AF56A9291F057379003F4F17 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF56A9191F057378003F4F17 /* RCTPushNotification.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RCTPushNotification;
+		};
+		AF56A92B1F057379003F4F17 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF56A9191F057378003F4F17 /* RCTPushNotification.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D05745F1DE6004600184BB4;
+			remoteInfo = "RCTPushNotification-tvOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -279,8 +294,8 @@
 		A5C8E6855148597F1F836FCB /* Pods-ProgressTrackerMobile-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProgressTrackerMobile-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProgressTrackerMobile-tvOSTests/Pods-ProgressTrackerMobile-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		ACDF00A48CBC469EB3C586B3 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		ADF7520610FC418EA61F5488 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
-
 		AF25EFFA1EEA6C58005F1DE9 /* ProgressTrackerMobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ProgressTrackerMobile.entitlements; path = ProgressTrackerMobile/ProgressTrackerMobile.entitlements; sourceTree = "<group>"; };
+		AF56A9191F057378003F4F17 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		B3D5D2E3F8334E13814C9D42 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		C477CA50F3304E81B4EEC700 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		DDFE7EFABB4F4E719D729F3C /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
@@ -302,6 +317,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF56A93D1F0573C0003F4F17 /* libRCTPushNotification.a in Frameworks */,
 				AF25EFDF1EEA6C44005F1DE9 /* libOAuthManager.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
@@ -450,6 +466,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				AF56A9191F057378003F4F17 /* RCTPushNotification.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -525,6 +542,15 @@
 			isa = PBXGroup;
 			children = (
 				AF25EFA71EEA6AB4005F1DE9 /* libOAuthManager.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AF56A91A1F057378003F4F17 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AF56A92A1F057379003F4F17 /* libRCTPushNotification.a */,
+				AF56A92C1F057379003F4F17 /* libRCTPushNotification-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -620,6 +646,9 @@
 							com.apple.Keychain = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 0;
+							};
 						};
 					};
 				};
@@ -663,6 +692,10 @@
 				{
 					ProductGroup = 00C302D41ABCB9D200DB3ED1 /* Products */;
 					ProjectRef = 00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */;
+				},
+				{
+					ProductGroup = AF56A91A1F057378003F4F17 /* Products */;
+					ProjectRef = AF56A9191F057378003F4F17 /* RCTPushNotification.xcodeproj */;
 				},
 				{
 					ProductGroup = 139105B71AF99BAD00B5F7CC /* Products */;
@@ -887,6 +920,20 @@
 			remoteRef = AF25EFA61EEA6AB4005F1DE9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		AF56A92A1F057379003F4F17 /* libRCTPushNotification.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTPushNotification.a;
+			remoteRef = AF56A9291F057379003F4F17 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AF56A92C1F057379003F4F17 /* libRCTPushNotification-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRCTPushNotification-tvOS.a";
+			remoteRef = AF56A92B1F057379003F4F17 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -894,7 +941,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1138,6 +1184,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-oauth/ios/OAuthManager",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS",
+					"$(SRCROOT)/../node_modules/react-native/Libraries/PushNotificationIOS",
 				);
 				INFOPLIST_FILE = ProgressTrackerMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1165,6 +1212,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-oauth/ios/OAuthManager",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS",
+					"$(SRCROOT)/../node_modules/react-native/Libraries/PushNotificationIOS",
 				);
 				INFOPLIST_FILE = ProgressTrackerMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
