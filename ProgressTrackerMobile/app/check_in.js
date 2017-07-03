@@ -158,7 +158,6 @@ class CheckIn extends React.Component {
             title={title}
             onPress={this.showDetails(assessment.assessment_name)}
             />
-          {graph}
         </View>
       )
 
