@@ -146,8 +146,8 @@ class CheckIn extends React.Component {
   }
 
   checkInButton(time){
-    const dayRange =  this.state.dayRange;
-    if (this.validLocation && this.state.dayRange === time
+    console.log('checkin');
+    if (this.validLocation && 'morning' === time
       && this.state.checkIns[time] === null) {
       return (
         <View style={{backgroundColor: backgroundColor, margin: 2}}>
