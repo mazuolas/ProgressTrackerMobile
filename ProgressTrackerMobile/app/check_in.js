@@ -82,7 +82,7 @@ class CheckIn extends React.Component {
     } else {
       dayRange = null;
     }
-    
+
     this.setState({dayRange},this.checkInUser);
   }
 
@@ -142,6 +142,18 @@ class CheckIn extends React.Component {
           </View>
         </View>
       );
+    }
+  }
+
+  checkInButton(){
+    const dayRange =  this.state.dayRange;
+    const requestData = { checkin: {[dayRange]: new Date(Date.now())} };
+    if (this.validLocation && this.state.dayRange !== null
+      && this.state.checkIns[dayRange] === null) {
+      return null;
+      })
+    } else {
+      return null;
     }
   }
 
