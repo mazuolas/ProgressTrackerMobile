@@ -145,11 +145,10 @@ class CheckIn extends React.Component {
     }
   }
 
-  checkInButton(){
+  checkInButton(time){
     const dayRange =  this.state.dayRange;
-    const requestData = { checkin: {[dayRange]: new Date(Date.now())} };
-    if (this.validLocation && this.state.dayRange !== null
-      && this.state.checkIns[dayRange] === null) {
+    if (this.validLocation && this.state.dayRange === time
+      && this.state.checkIns[time] === null) {
       return (
         <View style={{backgroundColor: backgroundColor, margin: 2}}>
           <Button
