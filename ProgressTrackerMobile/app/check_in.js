@@ -136,7 +136,7 @@ class CheckIn extends React.Component {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(requestData)
-      }).then(this.fetchCheckins)
+      }).then(this.fetchCheckins.bind(this))
     } else {
       return null;
     }
