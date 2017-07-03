@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
-import { Icon, Button, Divider } from 'react-native-elements';
+import { Text, View, Button } from 'react-native';
+import { Icon, Divider } from 'react-native-elements';
 import { styleCheckedIn, styleToCheckIn,
         timeBlock, availability,
         timeHeader, timeBody } from './styles/check_in';
@@ -150,8 +150,18 @@ class CheckIn extends React.Component {
     const requestData = { checkin: {[dayRange]: new Date(Date.now())} };
     if (this.validLocation && this.state.dayRange !== null
       && this.state.checkIns[dayRange] === null) {
-      return null;
-      })
+      return (
+        <View style={{backgroundColor: backgroundColor, margin: 2}}>
+          <Button
+            color={'#C00A0A'}
+            key={assessment.assessment_name}
+            title={title}
+            onPress={this.showDetails(assessment.assessment_name)}
+            />
+          {graph}
+        </View>
+      )
+
     } else {
       return null;
     }
