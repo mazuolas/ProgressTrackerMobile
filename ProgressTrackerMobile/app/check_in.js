@@ -111,8 +111,8 @@ class CheckIn extends React.Component {
   }
 
   validLocation() {
-    console.log(this.state.latitude);
-    console.log(this.state.longitude);
+    // console.log(this.state.latitude);
+    // console.log(this.state.longitude);
     return (
       this.state.latitude >= MIN_LAT &&
       this.state.latitude <= MAX_LAT &&
@@ -128,7 +128,7 @@ class CheckIn extends React.Component {
     const dayRange =  this.state.dayRange;
     const requestData = { checkin: {[dayRange]: new Date(Date.now())} };
     if (this.validLocation() && this.state.dayRange !== null
-      && this.state.checkIns[dayRange] === null) {
+      && !this.state.checkIns[dayRange]) {
       fetch(`https://progresstrackerapi.herokuapp.com/api/checkins/today?session_token=${this.token}`, {
         method: 'PATCH',
         headers: {
@@ -175,18 +175,15 @@ class CheckIn extends React.Component {
   }
 
   checkInButton(time){
-    console.log('checkin');
-    console.log(this.validLocation());
-    console.log(this.state.checkIns[time]);
-    if (this.validLocation() && 'morning' === time
+    if (this.validLocation() && this.state.dayRange === time
       && this.state.checkIns[time] === null) {
       return (
-        <View style={{backgroundColor: backgroundColor, margin: 2}}>
+        <View style={{backgroundColor: '#ffcccc', margin: 2}}>
           <Button
             color={'#C00A0A'}
             key={time}
             title={"Check In"}
-            onPress={this.checkInUser}
+            onPress={this.checkInUser.bind(this)}
             />
         </View>
       )

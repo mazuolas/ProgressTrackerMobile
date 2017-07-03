@@ -83,7 +83,7 @@ class Profile extends React.Component {
                 <Icon raised
                   name='slack'
                   type='font-awesome'
-                  reverse='true'
+                  reverse={true}
                   color='#551A8B'
                   onPress={() => Linking.openURL('slack://channel?team=T03GU501J&id=C4P27V42D')}/>
                 <SocialIcon type='github-alt' onPress={() => Linking.openURL(this.state.user.github_url)} />
