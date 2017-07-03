@@ -153,9 +153,9 @@ class CheckIn extends React.Component {
         <View style={{backgroundColor: backgroundColor, margin: 2}}>
           <Button
             color={'#C00A0A'}
-            key={assessment.assessment_name}
-            title={title}
-            onPress={this.showDetails(assessment.assessment_name)}
+            key={time}
+            title={"Check In"}
+            onPress={this.checkInUser}
             />
         </View>
       )
@@ -175,12 +175,15 @@ class CheckIn extends React.Component {
             <PageTitle title={title} />
             <View style={{flex: 1}}>
               {this.showTime(morning, 'Morning', '8:00 - 9:00am')}
+              {this.checkInButton('morning')}
             </View>
             <View style={{flex: 1}}>
               {this.showTime(lunch, 'Lunch', '1:15 - 1:30pm')}
+              {this.checkInButton('lunch')}
             </View>
             <View style={{flex: 1}}>
               {this.showTime(afternoon, 'Afternoon', '4:00 - 4:15pm')}
+              {this.checkInButton('afternoon')}
             </View>
         </View>
       );
