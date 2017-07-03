@@ -38,7 +38,6 @@ class Stats extends React.Component {
   }
 
   buildList(){
-    console.log(this.state.assessments);
     let assessmentsArray = Object.keys(this.state.assessments).map((key)=>this.state.assessments[key]).reverse();
     if (!assessmentsArray[0]) {
       this.setState({list: 'empty'})
