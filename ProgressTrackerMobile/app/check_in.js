@@ -7,6 +7,30 @@ import { styleCheckedIn, styleToCheckIn,
 import { styleTitle } from './styles/page_title';
 import PageTitle from './page_title';
 
+// App Academy location:
+// north corner
+// 37.791603
+// -122.393693
+// east corner
+// 37.791361
+// -122.393403
+// south corner
+// 37.791035
+// -122.393752
+// west corner
+// 37.791285
+// -122.394041
+
+// max lat: 37.791603
+// min lat: 37.791035
+// max long: -122.393403
+// min long: -122.394041
+
+const MAX_LAT = 37.791603;
+const MIN_LAT = 37.791035;
+const MAX_LONG = -122.393403;
+const MIN_LONG = -122.394041;
+
 class CheckIn extends React.Component {
 
   constructor(props) {
@@ -86,10 +110,15 @@ class CheckIn extends React.Component {
     this.setState({dayRange},this.checkInUser);
   }
 
-  // App Academy location: 37.791258, -122.393777
   validLocation() {
-    return (this.state.latitude === 37.791258 &&
-      this.state.longitude === -122.393777)
+    console.log(this.state.latitude);
+    console.log(this.state.longitude);
+    return (
+      this.state.latitude >= MIN_LAT &&
+      this.state.latitude <= MAX_LAT &&
+      this.state.longitude >= MIN_LONG &&
+      this.state.longitude <= MAX_LONG
+    )
   }
 
   // 1) GPS matches coordinates
@@ -98,7 +127,7 @@ class CheckIn extends React.Component {
   checkInUser() {
     const dayRange =  this.state.dayRange;
     const requestData = { checkin: {[dayRange]: new Date(Date.now())} };
-    if (this.validLocation && this.state.dayRange !== null
+    if (this.validLocation() && this.state.dayRange !== null
       && this.state.checkIns[dayRange] === null) {
       fetch(`https://progresstrackerapi.herokuapp.com/api/checkins/today?session_token=${this.token}`, {
         method: 'PATCH',
@@ -147,7 +176,9 @@ class CheckIn extends React.Component {
 
   checkInButton(time){
     console.log('checkin');
-    if (this.validLocation && 'morning' === time
+    console.log(this.validLocation());
+    console.log(this.state.checkIns[time]);
+    if (this.validLocation() && 'morning' === time
       && this.state.checkIns[time] === null) {
       return (
         <View style={{backgroundColor: backgroundColor, margin: 2}}>
