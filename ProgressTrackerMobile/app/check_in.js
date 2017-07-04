@@ -1,11 +1,35 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
-import { Icon, Button, Divider } from 'react-native-elements';
+import { Text, View, Button } from 'react-native';
+import { Icon, Divider } from 'react-native-elements';
 import { styleCheckedIn, styleToCheckIn,
         timeBlock, availability,
         timeHeader, timeBody } from './styles/check_in';
 import { styleTitle } from './styles/page_title';
 import PageTitle from './page_title';
+
+// App Academy location:
+// north corner
+// 37.791603
+// -122.393693
+// east corner
+// 37.791361
+// -122.393403
+// south corner
+// 37.791035
+// -122.393752
+// west corner
+// 37.791285
+// -122.394041
+
+// max lat: 37.791603
+// min lat: 37.791035
+// max long: -122.393403
+// min long: -122.394041
+
+const MAX_LAT = 37.791603;
+const MIN_LAT = 37.791035;
+const MAX_LONG = -122.393403;
+const MIN_LONG = -122.394041;
 
 class CheckIn extends React.Component {
 
@@ -82,14 +106,19 @@ class CheckIn extends React.Component {
     } else {
       dayRange = null;
     }
-    
+
     this.setState({dayRange},this.checkInUser);
   }
 
-  // App Academy location: 37.791258, -122.393777
   validLocation() {
-    return (this.state.latitude === 37.791258 &&
-      this.state.longitude === -122.393777)
+    // console.log(this.state.latitude);
+    // console.log(this.state.longitude);
+    return (
+      this.state.latitude >= MIN_LAT &&
+      this.state.latitude <= MAX_LAT &&
+      this.state.longitude >= MIN_LONG &&
+      this.state.longitude <= MAX_LONG
+    )
   }
 
   // 1) GPS matches coordinates
@@ -98,8 +127,8 @@ class CheckIn extends React.Component {
   checkInUser() {
     const dayRange =  this.state.dayRange;
     const requestData = { checkin: {[dayRange]: new Date(Date.now())} };
-    if (this.validLocation && this.state.dayRange !== null
-      && this.state.checkIns[dayRange] === null) {
+    if (this.validLocation() && this.state.dayRange !== null
+      && !this.state.checkIns[dayRange]) {
       fetch(`https://progresstrackerapi.herokuapp.com/api/checkins/today?session_token=${this.token}`, {
         method: 'PATCH',
         headers: {
@@ -107,7 +136,7 @@ class CheckIn extends React.Component {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(requestData)
-      })
+      }).then(this.fetchCheckins.bind(this))
     } else {
       return null;
     }
@@ -145,6 +174,25 @@ class CheckIn extends React.Component {
     }
   }
 
+  checkInButton(time){
+    if (this.validLocation() && this.state.dayRange === time
+      && this.state.checkIns[time] === null) {
+      return (
+        <View style={{backgroundColor: '#ffcccc', margin: 2}}>
+          <Button
+            color={'#C00A0A'}
+            key={time}
+            title={"Check In"}
+            onPress={this.checkInUser.bind(this)}
+            />
+        </View>
+      )
+
+    } else {
+      return null;
+    }
+  }
+
   render() {
     const { morning, lunch, afternoon } = this.state.checkIns;
     const title = "Today's Check-Ins";
@@ -155,12 +203,15 @@ class CheckIn extends React.Component {
             <PageTitle title={title} />
             <View style={{flex: 1}}>
               {this.showTime(morning, 'Morning', '8:00 - 9:00am')}
+              {this.checkInButton('morning')}
             </View>
             <View style={{flex: 1}}>
               {this.showTime(lunch, 'Lunch', '1:15 - 1:30pm')}
+              {this.checkInButton('lunch')}
             </View>
             <View style={{flex: 1}}>
               {this.showTime(afternoon, 'Afternoon', '4:00 - 4:15pm')}
+              {this.checkInButton('afternoon')}
             </View>
         </View>
       );
